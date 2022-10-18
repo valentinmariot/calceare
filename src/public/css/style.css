@@ -1,0 +1,116 @@
+.header{
+    width: 100%;
+    height: 100px;
+    border-bottom: 20px solid var(--black-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    padding: 0 var(--5m);
+    background: rgba(245, 243, 239, 0.2);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+.header nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header nav a+a{
+    margin-left: var(--10m);
+}
+
+.footer{
+    color: var(--white-color) !important;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-30);
+    background: linear-gradient(330deg, #2C2C2C99, var(--black-color)) ;
+    padding: var(--3m);
+    position: relative;
+    overflow: hidden;
+}
+.footer nav{
+    display: grid;
+    width: fit-content;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: var(--3m);
+    margin-top: var(--3m);
+}
+.footer a, .footer a span{
+    color: var(--white-color) !important;
+}
+.hover-effect div>span:nth-child(2){
+    color: var(--primary-color);
+}
+.footer .hover-effect:before{
+    background-color: var(--white-color);
+}
+.footer nav a{
+    display: block;
+}
+.footer p{
+    position: absolute;
+    bottom: var(--3m);
+    right: var(--3m);
+    font-size: 14px;
+    font-weight: lighter;
+}
+.footer h3{
+    margin-bottom: 0 !important;
+}
+.footer input{
+    border-bottom: 1px solid var(--white-color);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: var(--text-font);
+    color: var(--white-color);
+    border-radius: 0;
+}
+.footer #ellipse{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(20%, 50%);
+}
+
+.section_landing_page>div{
+    width: 100%;
+    position: relative;
+    border-top: var(--border-black);
+    border-bottom: var(--border-black);
+}
+.section_landing_page>div>h1{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 24vw;
+    line-height: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+.section_landing_page>div>h1>div{
+    animation: 2s ease-in-out moveLetterTitle;
+}
+@keyframes moveLetterTitle {
+    0%{
+        transform: translateY(-100px) rotate(35deg);
+        opacity: 0;
+    }
+    70%{
+        transform: translateY(0) rotate(0deg);
+    }
+    100%{
+        opacity: 1;
+    }
+}

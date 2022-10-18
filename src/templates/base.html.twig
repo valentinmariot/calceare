@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Calceare | Home{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        {% block stylesheet %}
+            <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <header id="header" class="header">
+                <a class="logo_app new-york" href="{{ path('app_index') }}">
+                    Calceare
+                </a>
+                <nav>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>ABOUT</span>
+                            <span>ABOUT</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>SHOP NOW</span>
+                            <span>SHOP NOW</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>SIGN IN</span>
+                            <span>SIGN IN</span>
+                        </div>
+                    </a>
+                </nav>
+            </header>
+            <div class="bg">
+                <img src="{{ asset('img/bg.png') }}" alt="Texture image">
+            </div>
+            <div class="noise"></div>
+        {% endblock %}
+
+        {% block main %}
+            <main>
+                <section class="border-bottom section_landing_page">
+                    <div>
+                        <h1>
+                            <div>C</div>
+                            <div>a</div>
+                            <div>l</div>
+                            <div>c</div>
+                            <div>e</div>
+                            <div>a</div>
+                            <div>r</div>
+                            <div>e</div>
+                        </h1>
+                    </div>
+                </section>
+                <section class="border-bottom">
+                    <h1>NIKE Air Mag - h1</h1>
+                    <h2>Add product - h2</h2>
+                    <h3>Add product - h3</h3>
+                    <input type="text" placeholder="name">
+                    <a href="" class="CTA">
+                        <span>Make order →</span>
+                    </a>
+                    <p>Ceci est un paragraphe</p>
+                </section>
+                <section>
+                    <h3>Last drop of the seller - h3</h3>
+                    <div class="grid3">
+                        <a href="" class="card_produit">
+                            <img src="{{ asset('img/produit.jpg') }}" alt="">
+                            <div class="detail">
+                                <h4>NIKE Air Force One</h4>
+                                <div class="price">
+                                    <span class="primary_color dashed">$100.99</span>
+                                    <span class="italic">$80.99</span>
+                                </div>
+                            </div>
+                            <span class="hoverElement">
+                            Buy - me now !
+                        </span>
+                        </a>
+                        <a href="" class="card_produit">
+                            <img src="https://i.pinimg.com/564x/83/a3/54/83a3542fde46589d771718a7a38ed3a5.jpg" alt="">
+                            <div class="detail">
+                                <h4>NIKE Quelque chose</h4>
+                                <div class="price">
+                                    <span class="primary_color dashed">$80.99</span>
+                                    <span class="italic">$60.99</span>
+                                </div>
+                            </div>
+                            <span class="hoverElement">
+                            Buy - me now !
+                        </span>
+                        </a>
+                        <a href="" class="card_produit">
+                            <img src="https://i.pinimg.com/564x/c3/c7/84/c3c7844c9e8b1990753809a5f8c99943.jpg" alt="">
+                            <div class="detail">
+                                <h4>New Balance</h4>
+                                <div class="price">
+                                    <span class="italic">$129.99</span>
+                                </div>
+                            </div>
+                            <span class="hoverElement">
+                            Buy - me now !
+                        </span>
+                        </a>
+                    </div>
+                </section>
+            </main>
+        {% endblock %}
+
+        {% block footer %}
+            <footer id="footer" class="footer">
+                <a class="logo_app new-york" href="{{ path('app_index') }}">
+                    Calceare
+                </a>
+                <nav>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>ABOUT</span>
+                            <span>ABOUT</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>SHOP NOW</span>
+                            <span>SHOP NOW</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>SIGN IN</span>
+                            <span>SIGN IN</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>CONTACT</span>
+                            <span>CONTACT</span>
+                        </div>
+                    </a>
+                    <a href="" class="hover-effect">
+                        <div>
+                            <span>jobs</span>
+                            <span>jobs</span>
+                        </div>
+                    </a>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <h3>Newsletter</h3>
+                    <div></div>
+                    <input type="email" placeholder="your@email.here">
+                </nav>
+                <p>Made with ❤ by CALCEARE TEAM</p>
+                <svg id="ellipse" width="1170" height="752" viewBox="0 0 1170 752" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1101.52 593.817C1079.13 657.166 1002.48 695.277 895.325 704.911C788.36 714.528 651.806 695.652 511.069 645.913C370.333 596.173 252.244 525.05 175.077 450.356C97.7705 375.527 62.0939 297.719 84.483 234.371C106.872 171.022 183.517 132.911 290.675 123.277C397.64 113.66 534.195 132.536 674.931 182.276C815.667 232.015 933.756 303.138 1010.92 377.832C1088.23 452.661 1123.91 530.469 1101.52 593.817Z" stroke="#F5F3EF" stroke-opacity="0.8" stroke-width="4"/>
+                    <path id="star" d="M67.1956 247.574L85.4172 270.868L114.962 272.199L91.6673 290.421L90.3367 319.965L72.1151 296.671L42.5705 295.34L65.865 277.119L67.1956 247.574Z" fill="#F5F3EF"/>
+                </svg>
+            </footer>
+        {% endblock %}
+    </body>
+</html>
