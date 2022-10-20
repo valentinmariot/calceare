@@ -1,25 +1,15 @@
-# Php-fpm-alpine x Nginx
-### Symfony | Docker
+# C A L C E A R E
+### Made w/ Symfony | Docker | Twig | CSS
 
-Avec MariaDB & MailDev
+## Start :   
+• ```docker compose up -d```    
+• ```docker ps```   
+• ```docker exec -ti [id] bash```   
+• ```composer install```   
 
-Pour lancer le projet :
-````shell
-docker-compose up -d
-docker exec symfony_docker composer create-project symfony/skeleton html
-sudo chown -R $USER ./
-````
+[Go to&nbsp;&nbsp;C&nbsp;A&nbsp;L&nbsp;C&nbsp;E&nbsp;A&nbsp;R&nbsp;E](localhost:1234)
 
-Pensez ensuite à aller exécuter toutes vos commandes depuis l'intérieur du container.
 
-Par exemple :
-````shell
-cd symfony_project
-composer require orm
-````
-(Demandez à Composer de NE PAS créer une config Docker pour la database)
+C A L C E A R E team 💛 : 
 
-Enfin, modifiez la config DB dans le fichier .env de Symfony :
-````shell
-DATABASE_URL=mysql://root:ChangeMeLater@db:3306/symfony_db?serverVersion=mariadb-10.7.1
-````
+[Charles M.](https://github.com/Ezellix) | [Lucas H.](https://github.com/lhuerta13) | [Thomas J.](https://github.com/thomasjeu03) | [Maxime P.](https://github.com/MaximePalmino) | [Valentin M.](https://github.com/valentinmariot)
