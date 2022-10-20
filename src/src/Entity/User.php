@@ -14,42 +14,39 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $mail = null;
+    private ?string $email = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(length: 255)]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $profile_picture = null;
+
+    #[ORM\Column]
+    private ?int $role = null;
 
     #[ORM\Column(length: 50)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
-    private ?string $picture = null;
-
-    #[ORM\Column(length: 25)]
-    private ?string $role = null;
-
     #[ORM\Column(nullable: true)]
-    private ?int $rating = null;
+    private ?float $rating = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $RatingCount = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $ratingTotal = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
-    public function setMail(string $mail): self
+    public function setEmail(string $email): self
     {
-        $this->mail = $mail;
+        $this->email = $email;
 
         return $this;
     }
@@ -66,6 +63,30 @@ class User
         return $this;
     }
 
+    public function getProfilePicture(): ?string
+    {
+        return $this->profile_picture;
+    }
+
+    public function setProfilePicture(string $profile_picture): self
+    {
+        $this->profile_picture = $profile_picture;
+
+        return $this;
+    }
+
+    public function getRole(): ?int
+    {
+        return $this->role;
+    }
+
+    public function setRole(int $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
     public function getUsername(): ?string
     {
         return $this->username;
@@ -78,62 +99,26 @@ class User
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    public function getRating(): ?int
+    public function getRating(): ?float
     {
         return $this->rating;
     }
 
-    public function setRating(?int $rating): self
+    public function setRating(?float $rating): self
     {
         $this->rating = $rating;
 
         return $this;
     }
 
-    public function getRatingCount(): ?int
+    public function getDescription(): ?string
     {
-        return $this->RatingCount;
+        return $this->description;
     }
 
-    public function setRatingCount(?int $RatingCount): self
+    public function setDescription(?string $description): self
     {
-        $this->RatingCount = $RatingCount;
-
-        return $this;
-    }
-
-    public function getRatingTotal(): ?int
-    {
-        return $this->ratingTotal;
-    }
-
-    public function setRatingTotal(?int $ratingTotal): self
-    {
-        $this->ratingTotal = $ratingTotal;
+        $this->description = $description;
 
         return $this;
     }

@@ -14,20 +14,32 @@ class Product
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 500)]
-    private ?string $picture = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $creationDate = null;
+    #[ORM\Column]
+    private ?float $size = null;
+
+    #[ORM\Column(length: 2)]
+    private ?string $state = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $brand = null;
+
+    #[ORM\Column]
+    private ?bool $is_sold = null;
 
     public function getId(): ?int
     {
@@ -51,21 +63,33 @@ class Product
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->picture;
+        return $this->date;
     }
 
-    public function setPicture(string $picture): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->picture = $picture;
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -82,14 +106,50 @@ class Product
         return $this;
     }
 
-    public function getCreationDate(): ?\DateTimeInterface
+    public function getSize(): ?float
     {
-        return $this->creationDate;
+        return $this->size;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+    public function setSize(float $size): self
     {
-        $this->creationDate = $creationDate;
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?string $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function isIsSold(): ?bool
+    {
+        return $this->is_sold;
+    }
+
+    public function setIsSold(bool $is_sold): self
+    {
+        $this->is_sold = $is_sold;
 
         return $this;
     }
