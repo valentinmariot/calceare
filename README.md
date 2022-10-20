@@ -7,7 +7,7 @@
 • ```docker exec -ti [id] bash```   
 • ```composer install```   
 
-[Go to&nbsp;&nbsp;C&nbsp;A&nbsp;L&nbsp;C&nbsp;E&nbsp;A&nbsp;R&nbsp;E](localhost:1234)
+[Go to&nbsp;&nbsp;C&nbsp;A&nbsp;L&nbsp;C&nbsp;E&nbsp;A&nbsp;R&nbsp;E](http://localhost:1234)
 
 
 C A L C E A R E team 💛 : 
