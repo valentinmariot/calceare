@@ -14,7 +14,50 @@
             <img src="https://voi.img.pmdstatic.net/fit/~1~voi~2022~03~30~6c5c596e-af38-4aaa-bc36-151ed1bc77b3.jpeg/3187x4249/quality/80/lil-nas-x.jpeg" alt="">
         </figure>
         <div class="detail_user">
-            <h1>X-LIL-NAS-X</h1>
+
+            {#profil conneté#}
+            <form action="">
+                <h1 class="edit_icone">
+                    <input class="input_h1" type="text" name="name_user" value="X-LIL-NAS-X" placeholder="Your name" required>
+                </h1>
+
+                <div>
+                    <input type="mail" name="mail_user" value="lilnas@gmial.com" placeholder="Your E-mail" required>
+                </div>
+                <div>
+                    <textarea required name="description_user" id="description_user">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</textarea>
+                </div>
+                <div>
+                    <button type="submit" style="margin-left: auto" class="CTA">
+                        <span>Save edit →</span>
+                    </button>
+                </div>
+
+
+                <div>
+                    <div class="flexrow">
+                        <h5>SINCE:</h5>
+                        <p>17 Oct. 2022</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="flexrow">
+                        <h5>Sales:</h5>
+                        <p>10</p>
+                    </div>
+                </div>
+                <div class="note">
+                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                </div>
+            </form>
+
+
+            {#profil non connecté#}
+            {#<h1>X-LIL-NAS-X</h1>
             <div class="note">
                 <img src="{{ asset('img/star.png') }}" alt="Star">
                 <img src="{{ asset('img/star.png') }}" alt="Star">
@@ -23,7 +66,7 @@
                 <img src="{{ asset('img/star.png') }}" alt="Star">
             </div>
             <div>
-                <p class="description">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
+                <p id="description_user">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
             </div>
             <div>
                 <div class="flexrow">
@@ -36,11 +79,14 @@
                     <h5>Sales:</h5>
                     <p>10</p>
                 </div>
-            </div>
+            </div>#}
+
         </div>
         <div class="last-drop">
             {% include 'produits/card.html.twig' %}
-            <h2>last drop</h2>
+            <a href="" class="CTA">
+                <span>Last drop →</span>
+            </a>
         </div>
     </section>
     <section class="border-bottom">
@@ -49,6 +95,14 @@
             {% include 'produits/card.html.twig' %}
             {% include 'produits/card.html.twig' %}
             {% include 'produits/card.html.twig' %}
+        </div>
+    </section>
+    <section>
+        <div class="section_title">
+            <h3>opinion</h3>
+            <button class="CTA">
+                <span>rate this seller +</span>
+            </button>
         </div>
     </section>
 {% endblock %}

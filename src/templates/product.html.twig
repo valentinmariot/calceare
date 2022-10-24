@@ -1,21 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Product
+    NIKE Air Mag
 {% endblock %}
 
 {% block stylesheet %}
-    <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/products.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
 
     <section class="product grid2 border-bottom">
-        <div class="product-img">
+        <figure class="product-img border-radius shadow">
             <img src="{{ asset('img/produit.jpg') }}" alt="">
-        </div>
+        </figure>
         <div class="product-detail">
 
             <div class="product-title">
@@ -29,33 +27,35 @@
                 <div class="product-tag">air mag</div>
             </div>
 
-            <div class="product-flex-container">
+            <div class="product-flex-container grid2">
                 <div>
                     <div class="product-desc">
                         <p>Dreams do come true. Nike is releasing Marty's mythical shoes from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
                     </div>
-                    <div class="product-size">
+                    <div class="product-size flexrow">
                         <h5>Size:</h5>
                         <p>6.5</p>
                     </div>
-                    <div class="product-condition">
+                    <div class="product-condition flexrow">
                         <h5>Condition:</h5>
                         <p>NM</p>
                     </div>
                 </div>
 
-                <div class="product-seller">
+                <a href="{{ path('app_user') }}" class="product-seller shadow">
                     <h2 class="product-seller-title">ABOUT THE SELLER</h2>
-                    <img src="{{ asset('img/produit.jpg') }}" alt="" class="product-seller-picture">
+                    <figure class="shadow product-seller-picture">
+                        <img src="{{ asset('img/produit.jpg') }}" alt="">
+                    </figure>
                     <h2 class="product-seller-name">X-LIL-NAS-X</h2>
                     <div class="product-seller-rating">
-                        <img src="{{ asset('img/favicon.svg') }}" alt="">
-                        <img src="{{ asset('img/favicon.svg') }}" alt="">
-                        <img src="{{ asset('img/favicon.svg') }}" alt="">
-                        <img src="{{ asset('img/favicon.svg') }}" alt="">
-                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                        <img src="{{ asset('img/star.png') }}" alt="">
+                        <img src="{{ asset('img/star.png') }}" alt="">
+                        <img src="{{ asset('img/star.png') }}" alt="">
+                        <img src="{{ asset('img/star.png') }}" alt="">
+                        <img src="{{ asset('img/star.png') }}" alt="">
                     </div>
-                </div>
+                </a>
             </div>
 
             <a href="" class="CTA">

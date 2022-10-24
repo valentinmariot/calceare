@@ -95,7 +95,7 @@ figure img{
     height: 100%;
     object-fit: cover;
 }
-h1{
+h1, .input_h1{
     font-size: var(--10m);
     font-family: var(--title-font);
     padding-bottom: var(--3m);
@@ -130,6 +130,14 @@ h5{
     font-style: italic;
     text-transform: uppercase;
 }
+form{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 a{
     color: var(--black-color);
     text-decoration: none;
@@ -140,7 +148,7 @@ p{
     line-height: var(--3m);
     white-space: pre-line;
 }
-input{
+input,textarea{
     background: none;
     border: 3px solid var(--black-color);
     border-radius: 20px;
@@ -151,13 +159,19 @@ input{
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
-input:hover{
+input:hover, textarea:hover{
     transition: 0.3s ease-in-out;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
-input:focus{
+input:focus, textarea:focus{
     background: var(--black-color);
     color: var(--white-color);
+}
+textarea{
+    width: 100% !important;
+    min-height: 80px;
+    height: auto;
+    font-family: var(--text-font);
 }
 section, .section{
     padding: var(--5m) 0;
@@ -167,6 +181,46 @@ section, .section{
     justify-content: flex-start;
     width: 100%;
     height: auto;
+}
+.section_title{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.edit_icone{
+    position: relative;
+}
+.edit_icone:before{
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "Edit it";
+    transform: rotate(35deg) translate(50%, -50%);
+    width: auto;
+    background: var(--primary-color);
+    font-size: var(--2m);
+    padding: 1px 2px;
+    color: var(--white-color);
+    height: auto;
+    z-index: 1;
+    transform-origin: center;
+}
+
+.input_h1{
+    border: var(--border-black);
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: inherit;
+}
+button{
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 li{
     list-style-type: none;
@@ -378,6 +432,7 @@ li{
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--3m);
+    border-radius: 0 0 30px 30px;
     background: rgba(245, 243, 239, 0.5);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -465,6 +520,22 @@ li{
     background: rgba(245, 243, 239, 0.6);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+.sales{
+    position: relative;
+}
+.sales:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 83px;
+    height: 86px;
+    z-index: 1;
+    background-image: url(../img/sales.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 .flexrow{
     width: auto;
