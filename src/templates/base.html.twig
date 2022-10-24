@@ -3,7 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Calceare | Home{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <meta name="description" content="Discover the coolest way to sell your sneakers with Calceare">
+
+        <meta itemprop="name" content="Calceare | Sneaker's Hall">
+        <meta itemprop="description" content="Discover the coolest way to sell your sneakers with Calceare">
+        <meta itemprop="image" content="">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Calceare | Sneaker's Hall">
+        <meta name="twitter:description" content="Discover the coolest way to sell your sneakers with Calceare">
+        <meta name="twitter:image" content="">
+
+        <meta property="og:site_name" content="Calceare">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="">
+        <meta property="og:title" content="Calceare | Sneaker's Hall">
+        <meta property="og:description" content="Discover the coolest way to sell your sneakers with Calceare">
+        <meta property="og:image" content="">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- Fav-Icon -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.svg') }}"/>
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

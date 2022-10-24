@@ -1,6 +1,19 @@
+@font-face {
+    font-family: 'NewYork';
+    src: url('../fonts/NewYork.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GothamA';
+    src: url('../fonts/Gotham.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 :root{
     --title-font: 'NewYork', serif;
-    --text-font: 'Gotham', sans-serif;
+    --text-font: 'GothamA', sans-serif;
     --primary-color: #7C1730;
     --dark-color: #2C2C2C;
     --black-color: var(--dark-color);
