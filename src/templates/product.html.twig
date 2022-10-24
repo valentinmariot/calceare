@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Product
+{% endblock %}
+
+{% block stylesheet %}
+    <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/products.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+    <section class="product grid2 border-bottom">
+        <div class="product-img">
+            <img src="{{ asset('img/produit.jpg') }}" alt="">
+        </div>
+        <div class="product-detail">
+
+            <div class="product-title">
+                <h1>NIKE Air Mag</h1>
+            </div>
+
+            <div class="product-tag-list">
+                <div class="product-tag">nike</div>
+                <div class="product-tag">refs</div>
+                <div class="product-tag">back to the future</div>
+                <div class="product-tag">air mag</div>
+            </div>
+
+            <div class="product-flex-container">
+                <div>
+                    <div class="product-desc">
+                        <p>Dreams do come true. Nike is releasing Marty's mythical shoes from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
+                    </div>
+                    <div class="product-size">
+                        <h5>Size:</h5>
+                        <p>6.5</p>
+                    </div>
+                    <div class="product-condition">
+                        <h5>Condition:</h5>
+                        <p>NM</p>
+                    </div>
+                </div>
+
+                <div class="product-seller">
+                    <h2 class="product-seller-title">ABOUT THE SELLER</h2>
+                    <img src="{{ asset('img/produit.jpg') }}" alt="" class="product-seller-picture">
+                    <h2 class="product-seller-name">X-LIL-NAS-X</h2>
+                    <div class="product-seller-rating">
+                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                        <img src="{{ asset('img/favicon.svg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <a href="" class="CTA">
+                <span class="product-order">Make order →</span>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="recommendation border-bottom">
+        <h2>You'll appreciate</h2>
+        <div class="recommendation-slider">
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+            <div class="recommendation-product">
+                {% include 'produits/card.html.twig' %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
