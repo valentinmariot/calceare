@@ -14,4 +14,12 @@ class IndexController extends AbstractController
 
         ]);
     }
+
+    #[Route('/shop', name: "app_shop")]
+    public function shop()
+    {
+        return $this->render("shop.html.twig", [
+
+        ]);
+    }
 }
