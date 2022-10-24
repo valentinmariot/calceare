@@ -14,7 +14,7 @@ class Product
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 75)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -35,7 +35,7 @@ class Product
     #[ORM\Column(length: 2)]
     private ?string $state = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $brand = null;
 
     #[ORM\Column]
@@ -135,7 +135,7 @@ class Product
         return $this->brand;
     }
 
-    public function setBrand(?string $brand): self
+    public function setBrand(string $brand): self
     {
         $this->brand = $brand;
 
