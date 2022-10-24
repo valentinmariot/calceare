@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    X-LIL-NAS-X
+{% endblock %}
+
+{% block stylesheet %}
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <section class="border-bottom grid3 user_detail">
+        <figure class="border-radius shadow">
+            <img src="https://voi.img.pmdstatic.net/fit/~1~voi~2022~03~30~6c5c596e-af38-4aaa-bc36-151ed1bc77b3.jpeg/3187x4249/quality/80/lil-nas-x.jpeg" alt="">
+        </figure>
+        <div class="detail_user">
+            <h1>X-LIL-NAS-X</h1>
+            <div class="note">
+                <img src="{{ asset('img/star.png') }}" alt="Star">
+                <img src="{{ asset('img/star.png') }}" alt="Star">
+                <img src="{{ asset('img/star.png') }}" alt="Star">
+                <img src="{{ asset('img/star.png') }}" alt="Star">
+                <img src="{{ asset('img/star.png') }}" alt="Star">
+            </div>
+            <div>
+                <p class="description">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
+            </div>
+            <div>
+                <div class="flexrow">
+                    <h5>SINCE:</h5>
+                    <p>17 Oct. 2022</p>
+                </div>
+            </div>
+            <div>
+                <div class="flexrow">
+                    <h5>Sales:</h5>
+                    <p>10</p>
+                </div>
+            </div>
+        </div>
+        <div class="last-drop">
+            {% include 'produits/card.html.twig' %}
+            <h2>last drop</h2>
+        </div>
+    </section>
+    <section class="border-bottom">
+        <h3>last drop of the seller</h3>
+        <div class="grid3">
+            {% include 'produits/card.html.twig' %}
+            {% include 'produits/card.html.twig' %}
+            {% include 'produits/card.html.twig' %}
+        </div>
+    </section>
+{% endblock %}
+
+

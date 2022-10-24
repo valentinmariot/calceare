@@ -123,6 +123,13 @@ h4{
     font-weight: 100;
     text-transform: none;
 }
+h5{
+    font-size: var(--3m);
+    font-family: var(--text-font);
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+}
 a{
     color: var(--black-color);
     text-decoration: none;
@@ -163,6 +170,9 @@ section, .section{
 }
 li{
     list-style-type: none;
+}
+.shadow{
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 .hover-effect:before{
     content: '';
@@ -445,7 +455,15 @@ li{
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
-
+.flexrow{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
 .primary_color{
     color: var(--primary-color) !important;
 }

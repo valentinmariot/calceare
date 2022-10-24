@@ -1,0 +1,40 @@
+.user_detail{
+    align-items: stretch;
+}
+.user_detail figure{
+    height: 100%;
+    max-height: 550px;
+}
+.last-drop{
+    display: grid;
+    height: 100%;
+    border-left: var(--border-black);
+    padding-left: var(--5m);
+}
+.detail_user>*{
+    margin-bottom: var(--3m);
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.note{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.note img{
+    margin-right: var(--1m);
+}
+.detail_user>div>div>h5{
+    margin-right: var(--1m);
+}
+.last-drop h2{
+    margin-top: var(--5m);
+    margin-bottom: 0;
+}
