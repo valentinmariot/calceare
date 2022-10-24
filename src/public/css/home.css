@@ -1,10 +1,29 @@
 .section_home_description{
     padding: var(--4m);
-    margin: var(--4m) 0;
+    margin: var(--4m) 0 0 0;
     background: rgba(148,147,146,0.3);
 }
+.section_home_description h3{
+    white-space: nowrap;
+}
+.section_home_description>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.section_home_description p{
+    text-transform: uppercase;
+}
 .section_home_description .stroke{
-
+    background: var(--dark-color);
+    height: var(--4m);
+    transform: skew(-20deg);
+    width: -webkit-fill-available;
+    margin-bottom: var(--5m);
+    margin-left: var(--5m);
 }
 .section_home_description .CTA{
     margin-left: auto;
@@ -15,4 +34,10 @@
 }
 .header .logo_app{
     opacity: 0;
+}
+.section_home_listing_product .grid3{
+    margin-bottom: var(--5m);
+}
+.section_home_listing_product .CTA{
+    margin-left: auto;
 }
