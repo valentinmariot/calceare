@@ -1,0 +1,18 @@
+.section_home_description{
+    padding: var(--4m);
+    margin: var(--4m) 0;
+    background: rgba(148,147,146,0.3);
+}
+.section_home_description .stroke{
+
+}
+.section_home_description .CTA{
+    margin-left: auto;
+}
+.section_home_description p{
+    color: var(--primary-color);
+    font-style: italic;
+}
+.header .logo_app{
+    opacity: 0;
+}

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Calceare | Home{% endblock %}</title>
+        <title>Calceare | {% block title %}{% endblock %}</title>
         <meta name="description" content="Discover the coolest way to sell your sneakers with Calceare">
 
         <meta itemprop="name" content="Calceare | Sneaker's Hall">
@@ -29,9 +29,10 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
         {% block stylesheet %}
-            <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
         {% endblock %}
     </head>
     <body>
@@ -67,77 +68,11 @@
             <div class="noise"></div>
         {% endblock %}
 
-        {% block main %}
-            <main>
-                <section class="border-bottom section_landing_page">
-                    <div>
-                        <h1>
-                            <div>C</div>
-                            <div>a</div>
-                            <div>l</div>
-                            <div>c</div>
-                            <div>e</div>
-                            <div>a</div>
-                            <div>r</div>
-                            <div>e</div>
-                        </h1>
-                    </div>
-                </section>
-                <section class="border-bottom">
-                    <h1>NIKE Air Mag - h1</h1>
-                    <h2>Add product - h2</h2>
-                    <h3>Add product - h3</h3>
-                    <input type="text" placeholder="name">
-                    <a href="" class="CTA">
-                        <span>Make order →</span>
-                    </a>
-                    <p>Ceci est un paragraphe</p>
-                </section>
-                <section>
-                    <h3>Last drop of the seller - h3</h3>
-                    <div class="grid3">
-                        <a href="" class="card_produit">
-                            <img src="{{ asset('img/produit.jpg') }}" alt="">
-                            <div class="detail">
-                                <h4>NIKE Air Force One</h4>
-                                <div class="price">
-                                    <span class="primary_color dashed">$100.99</span>
-                                    <span class="italic">$80.99</span>
-                                </div>
-                            </div>
-                            <span class="hoverElement">
-                            Buy - me now !
-                        </span>
-                        </a>
-                        <a href="" class="card_produit">
-                            <img src="https://i.pinimg.com/564x/83/a3/54/83a3542fde46589d771718a7a38ed3a5.jpg" alt="">
-                            <div class="detail">
-                                <h4>NIKE Quelque chose</h4>
-                                <div class="price">
-                                    <span class="primary_color dashed">$80.99</span>
-                                    <span class="italic">$60.99</span>
-                                </div>
-                            </div>
-                            <span class="hoverElement">
-                            Buy - me now !
-                        </span>
-                        </a>
-                        <a href="" class="card_produit">
-                            <img src="https://i.pinimg.com/564x/c3/c7/84/c3c7844c9e8b1990753809a5f8c99943.jpg" alt="">
-                            <div class="detail">
-                                <h4>New Balance</h4>
-                                <div class="price">
-                                    <span class="italic">$129.99</span>
-                                </div>
-                            </div>
-                            <span class="hoverElement">
-                            Buy - me now !
-                        </span>
-                        </a>
-                    </div>
-                </section>
-            </main>
-        {% endblock %}
+        <main>
+            {% block content %}
+
+            {% endblock %}
+        </main>
 
         {% block footer %}
             <footer id="footer" class="footer">

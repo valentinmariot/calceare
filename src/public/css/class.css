@@ -129,6 +129,9 @@ a{
     width: fit-content;
     text-transform: uppercase;
 }
+p{
+    line-height: var(--3m);
+}
 input{
     background: none;
     border: 3px solid var(--black-color);
@@ -226,6 +229,9 @@ li{
 }
 .border-bottom{
     border-bottom: 20px solid var(--black-color) !important;
+}
+.border-radius{
+    border-radius: var(--radius-30);
 }
 .bg{
     min-width: 100vw;
@@ -407,9 +413,8 @@ li{
 }
 .CTA span{
     z-index: 1;
-    color: var(--white-color);
-    fill: var(--white-color);
-    mix-blend-mode: difference;
+    color: var(--dark-color);
+    fill: var(--dark-color);
 }
 .CTA:before{
     content: '';
@@ -418,9 +423,14 @@ li{
     width: 0;
     bottom: 0;
     right: 0;
+    z-index: -1;
     background-color: var(--dark-color);
     transition: 0.4s ease-in-out;
     transform: skewX(10deg);
+}
+.CTA:hover span{
+    color: var(--white-color);
+    fill: var(--white-color);
 }
 .CTA:hover:before{
     transition: 0.4s ease-in-out;
@@ -429,7 +439,11 @@ li{
     background-color: var(--dark-color);
     transform: skewX(0deg);
 }
-
+.glass-effect{
+    background: rgba(245, 243, 239, 0.6);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
 
 .primary_color{
     color: var(--primary-color) !important;
