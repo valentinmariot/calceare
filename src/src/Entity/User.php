@@ -13,7 +13,7 @@ class User
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
@@ -22,14 +22,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $profile_picture = null;
 
-    #[ORM\Column]
-    private ?int $role = null;
+    #[ORM\Column(nullable: true)]
+    private ?float $rating = null;
 
     #[ORM\Column(length: 50)]
     private ?string $username = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?float $rating = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -75,14 +72,14 @@ class User
         return $this;
     }
 
-    public function getRole(): ?int
+    public function getRating(): ?float
     {
-        return $this->role;
+        return $this->rating;
     }
 
-    public function setRole(int $role): self
+    public function setRating(?float $rating): self
     {
-        $this->role = $role;
+        $this->rating = $rating;
 
         return $this;
     }
@@ -95,18 +92,6 @@ class User
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    public function getRating(): ?float
-    {
-        return $this->rating;
-    }
-
-    public function setRating(?float $rating): self
-    {
-        $this->rating = $rating;
 
         return $this;
     }
