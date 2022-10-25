@@ -1,0 +1,24 @@
+.login_title,
+.login_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.login_form {
+    gap: var(--1m);
+}
+
+.login_form--button {
+    margin-top: var(--2m);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: var(--1m);
+    padding: var(--1m) var(--2m);
+}
+
+.login_form--button:hover {
+    background-color: var(--dark-color);
+    transition-duration: 0.5s;
+}

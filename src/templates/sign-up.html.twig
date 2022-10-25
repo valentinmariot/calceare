@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}Sign Up{% endblock %}
+{% block stylesheet %}
+    <link href="{{ asset('css/signUp.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+   <section class="sign-up_title">
+        <h1>Sign Up</h1>
+    </section>
+    <section>
+        <form class="sign-up_form" method="post">
+            <label class="sign-up_form--label" for="email">
+                Email
+            </label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+            />
+            <label class="sign-up_form--label" for="password">
+                Password
+            </label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+            />
+            <button type="submit" class="sign-up_form--button">
+                SUBMIT
+            </button>
+        </form>
+    </section>
+{% endblock %}
