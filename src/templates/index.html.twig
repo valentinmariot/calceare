@@ -41,7 +41,7 @@
     </section>
     <section class="section_home_listing_product">
         <div class="grid3">
-            {% for product in products %}
+            {% for product in products  %}
                 <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                     <img src="{{ product.image }}" alt="{{ product.title }}">
                     <div class="detail">

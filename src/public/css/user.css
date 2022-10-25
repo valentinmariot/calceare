@@ -11,6 +11,13 @@
     border-left: var(--border-black);
     padding-left: var(--5m);
 }
+.last-drop form{
+    width: 100%;
+}
+.last-drop form input, .last-drop form select, .last-drop form textarea{
+    width: 100% !important;
+    margin-bottom: var(--1m);
+}
 .detail_user>*:not(form), .detail_user>form>*{
     margin-bottom: var(--3m);
     width: 100%;
@@ -35,6 +42,6 @@
     margin-right: var(--1m);
 }
 .last-drop .CTA{
-    margin-top: var(--5m);
+    margin-top: var(--3m);
     margin-bottom: 0;
 }
