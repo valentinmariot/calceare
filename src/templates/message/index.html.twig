@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All commentary{% endblock %}
+
+{% block body %}
+ <div class="section_landing_page">
+     <h1>Les commentaires</h1>
+     {% if messages|length > 0 %}
+         {{ dump(messages) }}
+
+         {% for message in messages %}
+            <h1>{{ message.messageDesc }}</h1>
+     <div>
+     </div>
+     {% endfor %}
+         {% else %}
+         There is nothing yet
+     {% endif %}
+ </div>
+{% endblock %}
