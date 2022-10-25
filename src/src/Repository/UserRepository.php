@@ -80,4 +80,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function add(User $user, bool $true)
+    {
+    }
 }
