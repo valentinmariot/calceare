@@ -4,7 +4,6 @@ namespace App\Factory;
 
 use App\Entity\Product;
 use App\Repository\ProductRepository;
-use Faker\Core\DateTime;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -40,7 +39,6 @@ final class ProductFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'title' => self::faker()->text(20),
             'date' => \DateTime::createFromFormat('Y-m-d', '2022-02-12'), // TODO add DATETIME ORM type manually
             'image' => 'https://static.sneakerdistrict.com/images2/Nike-Air-Force-1-07-Just-Do-It-White-Black-Total-Orange-81-800.jpg',
