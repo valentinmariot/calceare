@@ -1,14 +1,43 @@
 {% extends 'base.html.twig' %}
 {% block title %}Shop{% endblock %}
 {% block stylesheet %}
-    <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/shop.css') }}" rel="stylesheet"/>
 {% endblock %}
-{% block main %}
-    <nav class="shop_nav">
-        <h3>Last drop of the seller - h3</h3>
-    </nav>
+
+{% block content %}
+    <section class="shop_title">
+        <h1>SHOP</h1>
+    </section>
+    <section class="shop_menu">
+        <navbar>
+            <ul class="shop_menu_list">
+                <li class="shop_menu_list-item">
+                    <h3 class="shop_menu_list--title">Sort by</h3>
+                </li>
+                <li  class="shop_menu_list-item dropdown">
+                    <label>BRAND</label>
+                    <ul class="sub-menu">
+                        <li class="sub-menu-item">
+                            <a href="#">NIKE</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">ADIDAS</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">LACOST</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">NEW BALANCE</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="shop_menu_list-item">COLORS</li>
+                <li class="shop_menu_list-item">CONDITION</li>
+                <li class="shop_menu_list-item">PRICES</li>
+                <li class="shop_menu_list-item">SIZE</li>
+            </ul>
+        </navbar>
+    </section>
     <section>
         <div class="grid3">
             <a href="" class="card_produit">
