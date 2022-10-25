@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}Shop{% endblock %}
+{% block stylesheet %}
+    <link href="{{ asset('css/shop.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <section class="shop_title">
+        <h1>SHOP</h1>
+    </section>
+    <section class="shop_menu">
+        <navbar>
+            <ul class="shop_menu_list">
+                <li class="shop_menu_list-item">
+                    <h3 class="shop_menu_list--title">Sort by</h3>
+                </li>
+                <li  class="shop_menu_list-item dropdown">
+                    <label>BRAND</label>
+                    <ul class="sub-menu">
+                        <li class="sub-menu-item">
+                            <a href="#">NIKE</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">ADIDAS</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">LACOST</a>
+                        </li>
+                        <li class="sub-menu-item">
+                            <a href="#">NEW BALANCE</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="shop_menu_list-item">COLORS</li>
+                <li class="shop_menu_list-item">CONDITION</li>
+                <li class="shop_menu_list-item">PRICES</li>
+                <li class="shop_menu_list-item">SIZE</li>
+            </ul>
+        </navbar>
+    </section>
+    <section>
+        <div class="grid3">
+            <a href="" class="card_produit">
+                <img src="{{ asset('img/produit.jpg') }}" alt="">
+                <div class="detail">
+                    <h4>NIKE Air Force One</h4>
+                    <div class="price">
+                        <span class="primary_color dashed">$100.99</span>
+                        <span class="italic">$80.99</span>
+                    </div>
+                </div>
+                <span class="hoverElement">
+                Buy - me now !
+            </span>
+            </a>
+            <a href="" class="card_produit">
+                <img src="https://i.pinimg.com/564x/83/a3/54/83a3542fde46589d771718a7a38ed3a5.jpg" alt="">
+                <div class="detail">
+                    <h4>NIKE Quelque chose</h4>
+                    <div class="price">
+                        <span class="primary_color dashed">$80.99</span>
+                        <span class="italic">$60.99</span>
+                    </div>
+                </div>
+                <span class="hoverElement">
+                Buy - me now !
+            </span>
+            </a>
+            <a href="" class="card_produit">
+                <img src="https://i.pinimg.com/564x/c3/c7/84/c3c7844c9e8b1990753809a5f8c99943.jpg" alt="">
+                <div class="detail">
+                    <h4>New Balance</h4>
+                    <div class="price">
+                        <span class="italic">$129.99</span>
+                    </div>
+                </div>
+                <span class="hoverElement">
+                Buy - me now !
+            </span>
+            </a>
+        </div>
+    </section>
+{% endblock %}
