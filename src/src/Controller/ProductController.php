@@ -12,15 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product/', name: "app_product")]
-    public function index(ProductRepository $repository)
+    #[Route('/product/{id}', name: "app_product")]
+    public function index(ProductRepository $repository , Product $product): Response
     {
         return $this->render("product.html.twig", [
+            'product' => $product,
             'products' => $repository->findAll()
         ]);
     }
 
-    #[Route('/product/add_product', name: "app_add_product_form", methods: ["POST"])]
+    #[Route('/user/add_product', name: "app_add_product_form", methods: ["POST"])]
     public function addProduct(EntityManagerInterface $entityManager, Request $request): Response
     {
             $product = (new Product())
@@ -38,6 +39,6 @@ class ProductController extends AbstractController
         $entityManager->persist($product);
         $entityManager->flush();
 
-        return $this->render('product.html.twig');
+        return $this->redirectToRoute('app_index');
     }
 }

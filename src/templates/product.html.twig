@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    NIKE Air Mag
+    {{ product.title }}
 {% endblock %}
 
 {% block stylesheet %}
@@ -12,34 +12,32 @@
 
     <section class="product grid2 border-bottom">
         <figure class="product-img border-radius shadow">
-            <img src="{{ asset('img/produit.jpg') }}" alt="">
+            <img src="{{ product.image }}" alt="{{ product.title }}">
         </figure>
         <div class="product-detail">
 
             <div class="product-title">
-                <h1>NIKE Air Mag</h1>
+                <h1>{{ product.title }}</h1>
             </div>
 
             <div class="product-tag-list">
-                <div class="product-tag">nike</div>
-                <div class="product-tag">refs</div>
-                <div class="product-tag">back to the future</div>
-                <div class="product-tag">air mag</div>
+                <div class="product-tag">{{ product.brand }}</div>
             </div>
 
             <div class="product-flex-container grid2">
                 <div>
                     <div class="product-desc">
-                        <p>Dreams do come true. Nike is releasing Marty's mythical shoes from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
+                        <p>{{ product.description }}</p>
                     </div>
                     <div class="product-size flexrow">
                         <h5>Size:</h5>
-                        <p>6.5</p>
+                        <p>{{ product.size }}</p>
                     </div>
                     <div class="product-condition flexrow">
                         <h5>Condition:</h5>
-                        <p>NM</p>
+                        <p>{{ product.state }}</p>
                     </div>
+                    <h3 style="margin-top: 40px" class="primary_color">${{ product.price }}</h3>
                 </div>
 
                 <a href="{{ path('app_user') }}" class="product-seller shadow">
@@ -70,12 +68,12 @@
         <div class="recommendation-slider">
             {% for product in products %}
                 <div class="recommendation-product">
-                    <a href="{{ path('app_product') }}" class="card_produit sales">
+                    <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                         <img src="{{ product.image }}" alt="{{ product.title }}">
                         <div class="detail">
                             <h4>{{ product.title }}</h4>
                             <div class="price">
-                                <span class="primary_color dashed">$100.99</span>
+                                <span class="primary_color dashed">$100</span>
                                 <span class="italic">${{ product.price }}</span>
                             </div>
                         </div>

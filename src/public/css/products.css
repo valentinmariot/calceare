@@ -103,9 +103,6 @@
     margin-top: var(--10m);
 }
 
-.product-flex-container {
-    display: flex;
-}
 .product-flex-container{
     margin-top: var(--5m);
 }

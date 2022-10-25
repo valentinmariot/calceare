@@ -41,7 +41,7 @@
     <section>
         <div class="grid3">
             {% for product in products %}
-                <a href="{{ path('app_product') }}" class="card_produit sales">
+                <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                     <img src="{{ product.image }}" alt="{{ product.title }}">
                     <div class="detail">
                         <h4>{{ product.title }}</h4>

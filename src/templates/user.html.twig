@@ -115,9 +115,19 @@
     <section class="border-bottom">
         <h3>last drop of the seller</h3>
         <div class="grid3">
-            {% include 'produits/card.html.twig' %}
-            {% include 'produits/card.html.twig' %}
-            {% include 'produits/card.html.twig' %}
+            {% for product in products %}
+                <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
+                    <img src="{{ product.image }}" alt="{{ product.title }}">
+                    <div class="detail">
+                        <h4>{{ product.title }}</h4>
+                        <div class="price">
+                            <span class="primary_color dashed">$100.99</span>
+                            <span class="italic">${{ product.price }}</span>
+                        </div>
+                    </div>
+                    <span class="hoverElement">Buy - me now !</span>
+                </a>
+            {% endfor %}
         </div>
     </section>
     <section>
