@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Product;
 use App\Entity\User;
 use App\Factory\ProductFactory;
 use App\Factory\RoleFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Core\DateTime;
 
 class AppFixtures extends Fixture
 {
@@ -21,13 +23,10 @@ class AppFixtures extends Fixture
 //        $user1->setRole('admin');
 //        $user1->setUsername('Maxime');
 //
-//
-//
-//        $manager->persist($user1);
+//        $manager->persist($product1);
 //        $manager->flush();
 
-        RoleFactory::createMany(4);
-        UserFactory::createMany(10);
+        ProductFactory::createMany(10);
 
     }
 }

@@ -25,7 +25,7 @@
                     <input type="mail" name="mail_user" value="lilnas@gmial.com" placeholder="Your E-mail" required>
                 </div>
                 <div>
-                    <textarea required name="description_user" id="description_user">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</textarea>
+                    <textarea required name="description_user" id="description_user" placeholder="Your description">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</textarea>
                 </div>
                 <div>
                     <button type="submit" style="margin-left: auto" class="CTA">
@@ -82,11 +82,34 @@
             </div>#}
 
         </div>
+
         <div class="last-drop">
-            {% include 'produits/card.html.twig' %}
+            {#{% include 'produits/card.html.twig' %}
             <a href="" class="CTA">
                 <span>Last drop →</span>
-            </a>
+            </a>#}
+
+            <h2>Add a product</h2>
+            <form action="{{ path("app_add_product_form") }}" method="post">
+                <input type="text" name="title" placeholder="title" required>
+
+                <select name="state">
+                    <option value="PO">PO</option>
+                    <option value="US">US</option>
+                    <option value="GD">GD</option>
+                    <option value="EX">EX</option>
+                    <option value="NM">NM</option>
+                    <option value="M">M</option>
+                </select>
+                <input type="text" name="brand" placeholder="brand" required>
+                <textarea name="description" placeholder="decription" required></textarea>
+                <input type="file" name="image" required>
+                <input type="number" name="price" placeholder="price" required>
+                <input type="number" name="size" placeholder="size" required>
+                <button type="submit" class="CTA">
+                    <span>ADD IT →</span>
+                </button>
+            </form>
         </div>
     </section>
     <section class="border-bottom">
