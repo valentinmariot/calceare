@@ -1,0 +1,24 @@
+.sign-up_title,
+.sign-up_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.sign-up_form {
+    gap: var(--1m);
+}
+
+.sign-up_form--button {
+    margin-top: var(--2m);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: var(--1m);
+    padding: var(--1m) var(--2m);
+}
+
+.sign-up_form--button:hover {
+    background-color: var(--dark-color);
+    transition-duration: 0.5s;
+}
