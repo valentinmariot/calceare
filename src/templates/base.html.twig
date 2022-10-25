@@ -27,7 +27,6 @@
         <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.svg') }}"/>
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
         <link href="{{ asset('css/class.css') }}" rel="stylesheet"/>
@@ -54,10 +53,16 @@
                             <span>SHOP NOW</span>
                         </div>
                     </a>
-                    <a href="" class="hover-effect">
+                    <a href="{{ path('app_login') }}" class="hover-effect">
                         <div>
-                            <span>SIGN IN</span>
-                            <span>SIGN IN</span>
+                            <span>LOGIN</span>
+                            <span>LOGIN</span>
+                        </div>
+                    </a>
+                    <a href="{{ path('app_sign-up') }}" class="hover-effect">
+                        <div>
+                            <span>SIGN UP</span>
+                            <span>SIGN UP</span>
                         </div>
                     </a>
                 </nav>
