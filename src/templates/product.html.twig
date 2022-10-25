@@ -27,6 +27,7 @@
             <div class="product-flex-container grid2">
                 <div>
                     <div class="product-desc">
+                        <p style="margin-bottom: 8px">{{ product.date|format_datetime('full', 'none', locale='fr') }}</p>
                         <p>{{ product.description }}</p>
                     </div>
                     <div class="product-size flexrow">
