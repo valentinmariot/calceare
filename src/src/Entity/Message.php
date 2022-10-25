@@ -15,7 +15,11 @@ class Message
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $message_desc = null;
+    private ?string $messageDesc = null;
+
+    #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
 
     public function getId(): ?int
     {
@@ -24,12 +28,24 @@ class Message
 
     public function getMessageDesc(): ?string
     {
-        return $this->message_desc;
+        return $this->messageDesc;
     }
 
-    public function setMessageDesc(string $message_desc): self
+    public function setMessageDesc(string $messageDesc): self
     {
-        $this->message_desc = $message_desc;
+        $this->messageDesc = $messageDesc;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

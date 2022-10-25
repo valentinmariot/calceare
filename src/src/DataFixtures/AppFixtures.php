@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Product;
+use App\Entity\Message;
 use App\Entity\User;
 use App\Factory\ProductFactory;
 use App\Factory\RoleFactory;
@@ -32,8 +33,14 @@ class AppFixtures extends Fixture
         $user1->setRating(5);
         $user1->setDescription('lorem ipsum');
 //      $user1->setRoles(['ROLE_ADMIN']);
-
         $manager->persist($user1);
+
+        $message1 = new Message();
+        $message1->setMessageDesc('lorem ipsum');
+        $message1->setAuthor($user1);
+
+        $manager->persist($message1);
+
         $manager->flush();
 
 
