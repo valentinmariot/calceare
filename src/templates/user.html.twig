@@ -9,17 +9,13 @@
 {% endblock %}
 
 {% block content %}
-    {% if user %}
-        <h1>Hey from user</h1>
-    {% endif %}
     <section class="border-bottom grid3 user_detail">
         {#TODO : show user.image#}
         <figure class="border-radius shadow">
             <img src="" alt="{{ user.username }}">
         </figure>
         <div class="detail_user">
-            {#TODO : if user connected = user showed#}
-            {% if app.user %}
+            {% if canEdit == false %}
                 <form action="{{ path("app_edit_user_form") }}" method="post">
                     <h1 class="edit_icone">
                         <input class="input_h1" type="text" name="name_user" value="{{ user.username }}" placeholder="Your name" required>
@@ -85,8 +81,7 @@
         </div>
 
         <div class="last-drop">
-            {#TODO : if user connected = user showed#}
-            {% if app.user %}
+            {% if canEdit == false %}
                 <h2>Add a product</h2>
                 <form action="{{ path("app_add_product_form") }}" method="post">
                     <input type="text" name="title" placeholder="title" required>

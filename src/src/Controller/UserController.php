@@ -17,28 +17,27 @@ class UserController extends AbstractController
     #[Route('/user/{id}', name: "app_user")]
     public function user(ProductRepository $repository, User $user): Response
     {
-
-        if($user !== $this->getUser()) {
-
-//            $this->denyAccessUnlessGranted('view', $user);
-            return $this->render("user.html.twig", [
-               'user' => $user
-            ]);
-        } else {
-
+        $canEdit = true;
+        
         $list = $repository->findAll();
         $filter3 = array_reverse($list);
         $filter3reverse = array_slice($filter3, 0, 3);
 
         $filter1 = array_reverse($list);
         $lastProductOfUser = array_slice($filter1, 0, 1);
+
+        if($user === $this->getUser()) {
+            $canEdit = false;
         }
 
         return $this->render("user.html.twig", [
             'products' => $filter3reverse,
             'productsUser' => $lastProductOfUser,
-            'user' => $user
+            'user' => $user,
+            'canEdit' => $canEdit
         ]);
+
+        
 
     }
 
