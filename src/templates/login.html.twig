@@ -9,21 +9,23 @@
         <h1>Login</h1>
     </section>
     <section>
-        <form class="login_form" method="post">
-            <label for="email">Email</label>
+        <form action="{{ path('app_login') }}" class="login_form" method="post">
+            <label for="_username">Pseudo</label>
             <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="E-mail"
+                    type="text"
+                    id="_username"
+                    name="_username"
+                    placeholder="Pseudo"
+                    value="{{ lastUsername }}"
             />
-            <label for="password">Password</label>
+            <label for="_password">Password</label>
             <input
                 type="password"
-                id="password"
-                name="password"
+                id="_password"
+                name="_password"
                 placeholder="Password"
             />
+            <input type="hidden" name="_target_path" value="/">
             <button type="submit" class="login_form--button">
                 CONNECT
             </button>
