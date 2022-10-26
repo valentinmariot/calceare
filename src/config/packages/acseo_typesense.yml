@@ -1,0 +1,29 @@
+acseo_typesense:
+    # Typesense host settings
+    typesense:
+        host: '%env(resolve:TYPESENSE_URL)%'
+        key: '%env(resolve:TYPESENSE_KEY)%'
+    # Collection settings
+    collections:
+        books:                                     # Typesense collection name
+            entity: 'App\Entity\Book'              # Doctrine Entity class
+            fields: 
+                id:                                # Entity attribute name
+                    name: entity_id                # Typesense attribute name
+                    type: primary                  # Attribute type
+                title: 
+                    name: title
+                    type: string
+                author:
+                     name: author
+                     type: object                  # Object conversion with __toString()
+                author.country:
+                    name : author_country          # equivalent of $book->getAuthor()->getCountry()
+                    type: string
+                genres:
+                    name : genres
+                    type: collection               # Convert ArrayCollection to array of strings
+                publishedAt: 
+                    name : published_at
+                    type: datetime
+            default_sorting_field: published_at    # Default sorting field. Must be primary, int32 or float
