@@ -9,6 +9,9 @@
 {% endblock %}
 
 {% block content %}
+    {% if user %}
+        <h1>Hey from user</h1>
+    {% endif %}
     <section class="border-bottom grid3 user_detail">
         {#TODO : show user.image#}
         <figure class="border-radius shadow">
