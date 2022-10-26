@@ -16,12 +16,12 @@ class UserController extends AbstractController
 {
 
     #[Route('/user/{id}', name: "app_user")]
-    public function user(ProductRepository $repository, User $user): Response
+    public function user(User $user): Response
     {
         $canEdit = true;
 
-        $userSale = $user->getSales()->toArray();
-        $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $userSale);
+        $salesOfUser = $user->getSales()->toArray();
+        $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
         $productUser = array_reverse($productUser);
         $lastProductOfUser = array_slice($productUser, 0, 1);
 
@@ -33,7 +33,7 @@ class UserController extends AbstractController
             'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
-            'sales' => $userSale,
+            'sales' => $salesOfUser,
             'productsUser' => $productUser,
         ]);
     }
