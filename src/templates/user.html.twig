@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    X-LIL-NAS-X
+    {{ user.username }}
 {% endblock %}
 
 {% block stylesheet %}
@@ -10,106 +10,120 @@
 
 {% block content %}
     <section class="border-bottom grid3 user_detail">
+        {#TODO : show user.image#}
         <figure class="border-radius shadow">
-            <img src="https://voi.img.pmdstatic.net/fit/~1~voi~2022~03~30~6c5c596e-af38-4aaa-bc36-151ed1bc77b3.jpeg/3187x4249/quality/80/lil-nas-x.jpeg" alt="">
+            <img src="" alt="{{ user.username }}">
         </figure>
         <div class="detail_user">
-
-            {#profil conneté#}
-            <form action="">
-                <h1 class="edit_icone">
-                    <input class="input_h1" type="text" name="name_user" value="X-LIL-NAS-X" placeholder="Your name" required>
-                </h1>
-
-                <div>
-                    <input type="mail" name="mail_user" value="lilnas@gmial.com" placeholder="Your E-mail" required>
-                </div>
-                <div>
-                    <textarea required name="description_user" id="description_user" placeholder="Your description">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</textarea>
-                </div>
-                <div>
-                    <button type="submit" style="margin-left: auto" class="CTA">
-                        <span>Save edit →</span>
-                    </button>
-                </div>
-
-
-                <div>
-                    <div class="flexrow">
-                        <h5>SINCE:</h5>
-                        <p>17 Oct. 2022</p>
+            {#TODO : if user connected = user showed#}
+            {% if app.user %}
+                <form action="{{ path("app_edit_user_form") }}" method="post">
+                    <h1 class="edit_icone">
+                        <input class="input_h1" type="text" name="name_user" value="{{ user.username }}" placeholder="Your name" required>
+                    </h1>
+                    <div>
+                        <input type="mail" name="mail_user" value="{{ user.email }}" placeholder="Your E-mail" required>
                     </div>
-                </div>
+                    <div>
+                        <textarea required name="description_user" id="description_user" placeholder="Your description">{{ user.description }}</textarea>
+                    </div>
+                    <div>
+                        <button type="submit" style="margin-left: auto" class="CTA">
+                            <span>Save edit →</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="flexrow">
+                            <h5>Sales:</h5>
+                            {#TODO : number of sales#}
+                            <p>10</p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        {% if user.rating == 0 %}
+                            <img src="{{ asset('img/star.png') }}" alt="Star"><h3 style="margin-bottom: 0">: 0</h3>
+                        {% else %}
+                            {% for i in 1..user.rating %}
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </form>
+            {% else %}
+                <h1>{{ user.username }}</h1>
+                    <div class="note">
+                        {% if user.rating == 0 %}
+                            <img src="{{ asset('img/star.png') }}" alt="Star"><h3 style="margin-bottom: 0">: 0</h3>
+                        {% else %}
+                            {% for i in 1..user.rating %}
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                {% if user.description is empty %}
+                    <div>
+                        <p>No description yet</p>
+                    </div>
+                {% else %}
+                    <div>
+                        <p id="description_user">{{ user.description }}</p>
+                    </div>
+                {% endif %}
                 <div>
                     <div class="flexrow">
                         <h5>Sales:</h5>
+                        {#TODO : number of sales#}
                         <p>10</p>
                     </div>
                 </div>
-                <div class="note">
-                    <img src="{{ asset('img/star.png') }}" alt="Star">
-                    <img src="{{ asset('img/star.png') }}" alt="Star">
-                    <img src="{{ asset('img/star.png') }}" alt="Star">
-                    <img src="{{ asset('img/star.png') }}" alt="Star">
-                    <img src="{{ asset('img/star.png') }}" alt="Star">
-                </div>
-            </form>
-
-
-            {#profil non connecté#}
-            {#<h1>X-LIL-NAS-X</h1>
-            <div class="note">
-                <img src="{{ asset('img/star.png') }}" alt="Star">
-                <img src="{{ asset('img/star.png') }}" alt="Star">
-                <img src="{{ asset('img/star.png') }}" alt="Star">
-                <img src="{{ asset('img/star.png') }}" alt="Star">
-                <img src="{{ asset('img/star.png') }}" alt="Star">
-            </div>
-            <div>
-                <p id="description_user">Dreams do come true. Nike is releasing Marty's mythical shoe from Back to the Future II. In addition to the glowing LEDs and all the McFly style you can handle, the Nike MAG finally brings power-lacing to your feet.</p>
-            </div>
-            <div>
-                <div class="flexrow">
-                    <h5>SINCE:</h5>
-                    <p>17 Oct. 2022</p>
-                </div>
-            </div>
-            <div>
-                <div class="flexrow">
-                    <h5>Sales:</h5>
-                    <p>10</p>
-                </div>
-            </div>#}
+            {% endif %}
 
         </div>
 
         <div class="last-drop">
-            {#{% include 'produits/card.html.twig' %}
-            <a href="" class="CTA">
-                <span>Last drop →</span>
-            </a>#}
-
-            <h2>Add a product</h2>
-            <form action="{{ path("app_add_product_form") }}" method="post">
-                <input type="text" name="title" placeholder="title" required>
-
-                <select name="state" class="input">
-                    <option value="PO">PO</option>
-                    <option value="US">US</option>
-                    <option value="GD">GD</option>
-                    <option value="EX">EX</option>
-                    <option value="NM">NM</option>
-                    <option value="M">M</option>
-                </select>
-                <input type="text" name="brand" placeholder="brand" required>
-                <textarea name="description" placeholder="decription" required></textarea>
-                <input type="file" name="image" accept="image/png, image/gif, image/jpeg"  required>
-                <input type="number" name="price" placeholder="price" required>
-                <input type="number" name="size" placeholder="size" required>
-                <button type="submit" class="CTA">
-                    <span>ADD IT →</span>
-                </button>
-            </form>
+            {#TODO : if user connected = user showed#}
+            {% if app.user %}
+                <h2>Add a product</h2>
+                <form action="{{ path("app_add_product_form") }}" method="post">
+                    <input type="text" name="title" placeholder="title" required>
+                    {#TODO : Add color choise#}
+                    <select name="state" class="input">
+                        <option value="PO">PO</option>
+                        <option value="US">US</option>
+                        <option value="GD">GD</option>
+                        <option value="EX">EX</option>
+                        <option value="NM">NM</option>
+                        <option value="M">M</option>
+                    </select>
+                    <input type="text" name="brand" placeholder="brand" required>
+                    <textarea name="description" placeholder="decription" required></textarea>
+                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"  required>
+                    <input type="number" name="price" placeholder="price" required>
+                    <input type="number" name="size" placeholder="size" required>
+                    <button type="submit" class="CTA">
+                        <span>ADD IT →</span>
+                    </button>
+                </form>
+            {% else %}
+                {#TODO : product of THIS user#}
+                {% for product in productsUser  %}
+                        <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
+                            <img src="{{ product.image }}" alt="{{ product.title }}">
+                            <div class="detail">
+                                <h4>{{ product.title }}</h4>
+                                <div class="price">
+                                    <span class="primary_color dashed">$100</span>
+                                    <span class="italic">${{ product.price }}</span>
+                                </div>
+                            </div>
+                            <span class="hoverElement">Buy - me now !</span>
+                        </a>
+                    <a href="{{ path('app_product', {id: product.id}) }}" class="CTA">
+                        <span>Last drop →</span>
+                    </a>
+                {% endfor %}
+            {% endif %}
         </div>
     </section>
     <section class="border-bottom">
