@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Sales;
 use App\Entity\User;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,27 +20,22 @@ class UserController extends AbstractController
     {
         $canEdit = true;
 
-        $userSale = $user->getSales();
-
-        $list = $repository->findAll();
-        $filter3 = array_reverse($list);
-        $filter3reverse = array_slice($filter3, 0, 3);
-
-        $filter1 = array_reverse($list);
-        $lastProductOfUser = array_slice($filter1, 0, 1);
+        $userSale = $user->getSales()->toArray();
+        $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $userSale);
+        $productUser = array_reverse($productUser);
+        $lastProductOfUser = array_slice($productUser, 0, 1);
 
         if($user === $this->getUser()) {
             $canEdit = false;
         }
 
         return $this->render("user.html.twig", [
-            'products' => $filter3reverse,
-            'productsUser' => $lastProductOfUser,
+            'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
-            'sales' => $userSale
+            'sales' => $userSale,
+            'productsUser' => $productUser,
         ]);
-
     }
 
     #[Route('/user/edit_user', name: "app_edit_user_form", methods: ["POST"])]

@@ -34,11 +34,9 @@
                     <div>
                         <div class="flexrow">
                             <h5>Sales:</h5>
-                            {% for sale in sales %}
-                                <span>
-                                    {{ sales|length }}
-                                </span>
-                            {% endfor %}
+                            <span>
+                                {{ sales|length }}
+                            </span>
                         </div>
                     </div>
                     <div class="note">
@@ -75,8 +73,9 @@
                 <div>
                     <div class="flexrow">
                         <h5>Sales:</h5>
-                        {#TODO : number of sales#}
-                        <p>10</p>
+                        <span>
+                            {{ sales|length }}
+                        </span>
                     </div>
                 </div>
             {% endif %}
@@ -107,8 +106,7 @@
                     </button>
                 </form>
             {% else %}
-                {#TODO : product of THIS user#}
-                {% for product in productsUser  %}
+                {% for product in products  %}
                         <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                             <img src="{{ product.image }}" alt="{{ product.title }}">
                             <div class="detail">
@@ -130,7 +128,7 @@
     <section class="border-bottom">
         <h3>last drop of the seller</h3>
         <div class="grid3">
-            {% for product in products %}
+            {% for product in productsUser %}
                 <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                     <img src="{{ product.image }}" alt="{{ product.title }}">
                     <div class="detail">
