@@ -54,7 +54,7 @@
                         </div>
                     </a>
                     {% if app.user %}
-                    <a href="{{ path('app_user') }}" class="hover-effect">
+                    <a href="{{ path('app_user', {id: app.user.id}) }}" class="hover-effect">
                         <div>
                             <span>PROFILE</span>
                             <span>PROFILE</span>
