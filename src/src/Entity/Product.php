@@ -41,6 +41,9 @@ class Product
     #[ORM\Column]
     private ?bool $is_sold = null;
 
+    #[ORM\OneToOne(mappedBy: 'Product', cascade: ['persist', 'remove'])]
+    private ?Sales $sales = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,23 @@ class Product
     public function setIsSold(bool $is_sold): self
     {
         $this->is_sold = $is_sold;
+
+        return $this;
+    }
+
+    public function getSales(): ?Sales
+    {
+        return $this->sales;
+    }
+
+    public function setSales(Sales $sales): self
+    {
+        // set the owning side of the relation if necessary
+        if ($sales->getProduct() !== $this) {
+            $sales->setProduct($this);
+        }
+
+        $this->sales = $sales;
 
         return $this;
     }

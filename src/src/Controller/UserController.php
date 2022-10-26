@@ -18,7 +18,9 @@ class UserController extends AbstractController
     public function user(ProductRepository $repository, User $user): Response
     {
         $canEdit = true;
-        
+
+        $userSale = $user->getSales();
+
         $list = $repository->findAll();
         $filter3 = array_reverse($list);
         $filter3reverse = array_slice($filter3, 0, 3);
@@ -34,10 +36,9 @@ class UserController extends AbstractController
             'products' => $filter3reverse,
             'productsUser' => $lastProductOfUser,
             'user' => $user,
-            'canEdit' => $canEdit
+            'canEdit' => $canEdit,
+            'sales' => $userSale
         ]);
-
-        
 
     }
 

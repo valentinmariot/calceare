@@ -34,8 +34,11 @@
                     <div>
                         <div class="flexrow">
                             <h5>Sales:</h5>
-                            {#TODO : number of sales#}
-                            <p>10</p>
+                            {% for sale in sales %}
+                                <span>
+                                    {{ sales|length }}
+                                </span>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="note">
