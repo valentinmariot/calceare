@@ -41,6 +41,12 @@ class AppFixtures extends Fixture
 
         $manager->persist($message1);
 
+        $message2 = new Message();
+        $message2->setMessageDesc('lorem ipsum');
+        $message2->setAuthor($user1);
+
+        $manager->persist($message2);
+
         $manager->flush();
 
 

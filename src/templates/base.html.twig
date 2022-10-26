@@ -53,6 +53,20 @@
                             <span>SHOP NOW</span>
                         </div>
                     </a>
+                    {% if app.user %}
+                    <a href="{{ path('app_user') }}" class="hover-effect">
+                        <div>
+                            <span>PROFILE</span>
+                            <span>PROFILE</span>
+                        </div>
+                    </a>
+                    <a href="{{ path('app_logout') }}" class="hover-effect">
+                        <div>
+                            <span>LOGOUT</span>
+                            <span>LOGOUT</span>
+                        </div>
+                    </a>
+                    {% else %}
                     <a href="{{ path('app_login') }}" class="hover-effect">
                         <div>
                             <span>LOGIN</span>
@@ -65,6 +79,7 @@
                             <span>SIGN UP</span>
                         </div>
                     </a>
+                    {% endif %}
                 </nav>
             </header>
             <div class="bg">

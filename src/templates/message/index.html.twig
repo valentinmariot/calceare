@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}All commentary{% endblock %}
-
-{% block body %}
- <div class="section_landing_page">
-     <h1>Les commentaires</h1>
+{% block content %}
+ <div>
      {% if messages|length > 0 %}
-         {{ dump(messages) }}
-
          {% for message in messages %}
             <h1>{{ message.messageDesc }}</h1>
-     <div>
+             <p>{{ message.author.username }}</p>
+             <div>
      </div>
      {% endfor %}
          {% else %}
