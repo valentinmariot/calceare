@@ -25,8 +25,8 @@ class ProductController extends AbstractController
     #[Route('/user/add_product', name: "app_add_product_form", methods: ["POST"])]
     public function addProduct(EntityManagerInterface $entityManager, Request $request): Response
     {
-        /** @var UploadedFile $newFile */
-        $newFile = $request->files->get('image');
+//        /** @var UploadedFile $newFile */
+        /*$newFile = $request->files->get('image');
         $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
         $originalFileName = $newFile->getClientOriginalName();
 
@@ -34,8 +34,9 @@ class ProductController extends AbstractController
 
         $fileName = Urlizer::urlize($baseFileName) . '-' . uniqid() . '-' . $newFile->guessExtension();
 
-        $newFile->move($destination, $fileName);
+        $newFile->move($destination, $fileName);*/
 
+        $imageEncoded = tempnam(sys_get_temp_dir(), $request->request->get("image"));
 
         $product = (new Product())
                 ->setTitle($request->request->get("title"))
@@ -44,6 +45,7 @@ class ProductController extends AbstractController
                 ->setBrand($request->request->get("brand"))
                 ->setDescription($request->request->get("description"))
                 ->setPrice($request->request->get("price"))
+                ->setImage($imageEncoded)
                 ->setSize($request->request->get("size"))
                 ->setDate(new \DateTime());
 
