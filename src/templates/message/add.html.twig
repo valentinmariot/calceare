@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Create new commentaries
+{% endblock %}
+{% block content %}
+
+    {% if app.user %}
+        {{ form(form) }}
+    {% endif %}
+
+{% endblock %}

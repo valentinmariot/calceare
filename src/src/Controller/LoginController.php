@@ -9,11 +9,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-    #[Route('/loginForm', name: 'app_login')]
+    #[Route('/login', name: 'app_login')]
     public function index(
         AuthenticationUtils $utils
     ): Response
     {
+
+
         // GET LAST USERNAME IF FAILED TO AUTH
         $lastUsername = $utils->getLastUsername();
         $error = $utils->getLastAuthenticationError();
