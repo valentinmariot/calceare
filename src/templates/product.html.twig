@@ -12,7 +12,7 @@
 
     <section class="product grid2 border-bottom">
         <figure class="product-img border-radius shadow">
-            <img src="{{ product.image }}" alt="{{ product.title }}">
+            <img src="../uploads/{{ product.image }}" alt="{{ product.title }}">
         </figure>
         <div class="product-detail">
 
@@ -70,7 +70,7 @@
             {% for product in products|reverse %}
                 <div class="recommendation-product">
                     <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
-                        <img src="{{ product.image }}" alt="{{ product.title }}">
+                        <img src="../uploads/{{ product.image }}" alt="{{ product.title }}">
                         <div class="detail">
                             <h4>{{ product.title }}</h4>
                             <div class="price">

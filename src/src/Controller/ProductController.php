@@ -25,30 +25,38 @@ class ProductController extends AbstractController
     #[Route('/user/add_product', name: "app_add_product_form", methods: ["POST"])]
     public function addProduct(EntityManagerInterface $entityManager, Request $request): Response
     {
-        /** @var UploadedFile $newFile */
-        $newFile = $request->files->get('image');
-        $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-        $originalFileName = $newFile->getClientOriginalName();
+        if (isset($_POST['addProduct'])) {
+            if (isset($_FILES['image'])) {
+                $img_name = $_FILES['image']['name'];
+                $img_type = $_FILES['image']['type'];
+                $tmp_name = $_FILES['image']['tmp_name'];
+                $img_explode = explode('.', $img_name);
+                $img_ext = end($img_explode);
+                $extensions = ["jpeg", "png", "jpg"];
+                if (in_array($img_ext, $extensions) === true) {
+                    $types = ["image/jpeg", "image/jpg", "image/png"];
+                    if (in_array($img_type, $types) === true) {
+                        $time = time();
+                        $new_img_name = $time . $img_name;
+                        if (move_uploaded_file($tmp_name, "uploads/" . $new_img_name)) {
+                            $product = (new Product())
+                                ->setTitle($request->request->get("title"))
+                                ->setIsSold('0')
+                                ->setState($request->request->get("state"))
+                                ->setBrand($request->request->get("brand"))
+                                ->setDescription($request->request->get("description"))
+                                ->setPrice($request->request->get("price"))
+                                ->setImage($new_img_name)
+                                ->setSize($request->request->get("size"))
+                                ->setDate(new \DateTime());
 
-        $baseFileName = pathinfo($originalFileName, PATHINFO_FILENAME);
-
-        $fileName = Urlizer::urlize($baseFileName) . '-' . uniqid() . '-' . $newFile->guessExtension();
-
-        $newFile->move($destination, $fileName);
-
-
-        $product = (new Product())
-                ->setTitle($request->request->get("title"))
-                ->setIsSold('0')
-                ->setState($request->request->get("state"))
-                ->setBrand($request->request->get("brand"))
-                ->setDescription($request->request->get("description"))
-                ->setPrice($request->request->get("price"))
-                ->setSize($request->request->get("size"))
-                ->setDate(new \DateTime());
-
-        $entityManager->persist($product);
-        $entityManager->flush();
+                            $entityManager->persist($product);
+                            $entityManager->flush();
+                        }
+                    }
+                }
+            }
+        }
 
         return $this->redirectToRoute('app_index');
     }

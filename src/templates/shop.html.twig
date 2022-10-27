@@ -42,7 +42,7 @@
         <div class="grid3">
             {% for product in products|reverse %}
                 <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
-                    <img src="{{ product.image }}" alt="{{ product.title }}">
+                    <img src="../uploads/{{ product.image }}" alt="{{ product.title }}">
                     <div class="detail">
                         <h4>{{ product.title }}</h4>
                         <div class="price">
