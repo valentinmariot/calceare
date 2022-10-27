@@ -30,7 +30,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/user/add_product', name: "app_add_product_form", methods: ["POST"])]
+    #[Route('/user/{id}/add_product', name: "app_add_product_form", methods: ["POST"])]
     public function addProduct(EntityManagerInterface $entityManager, Request $request): Response
     {
         if (isset($_POST['addProduct'])) {
@@ -57,8 +57,13 @@ class ProductController extends AbstractController
                                 ->setImage($new_img_name)
                                 ->setSize($request->request->get("size"))
                                 ->setDate(new \DateTime());
+                            $sale = (new Sales())
+                                ->setIsReviewed("0")
+                                ->setUser($this->getUser())
+                                ->setProduct($product);
 
                             $entityManager->persist($product);
+                            $entityManager->persist($sale);
                             $entityManager->flush();
                         }
                     }

@@ -85,7 +85,7 @@
         <div class="last-drop">
             {% if canEdit == false %}
                 <h2>Add a product</h2>
-                <form action="{{ path("app_add_product_form") }}" enctype="multipart/form-data" method="post">
+                <form action="{{ path("app_add_product_form", {id: user.id}) }}" enctype="multipart/form-data" method="post">
                     <input type="text" name="title" placeholder="title" required>
                     <select name="state" class="input">
                         <option value="PO">PO</option>
