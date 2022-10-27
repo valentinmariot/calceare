@@ -27,7 +27,8 @@
     font-style: italic;
 }
 .product-detail{
-    height: 100%;
+    position: sticky;
+    top: 140px;
 }
 .product-size *,
 .product-condition * {
