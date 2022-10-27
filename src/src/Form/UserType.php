@@ -6,6 +6,8 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UserType extends AbstractType
 {
@@ -13,12 +15,18 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('roles')
+            // ->add('roles')
             ->add('password')
             ->add('email')
-            ->add('profile_picture')
-            ->add('rating')
-            ->add('description')
+            ->add('profile_picture', FileType::class, [
+                'label' => 'Profile Picture (Image file)',
+                'data_class' => null
+           ])
+            // ->add('rating')
+            // ->add('description')
+            ->add('submit', SubmitType::class, [
+                'label' => 'Register'
+            ])
         ;
     }
 

@@ -45,3 +45,11 @@
     margin-top: var(--3m);
     margin-bottom: 0;
 }
+
+a {
+    color: var(--dark-color);
+}
+
+a:hover {
+    color: var(--white-color);
+}

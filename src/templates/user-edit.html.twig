@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ user.username }}
+{% endblock %}
+
+{% block stylesheet %}
+    <link href="{{ asset('css/user-edit.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <section class="border-bottom grid3 user_detail">
+        {#TODO : show user.image#}
+        {{ form(form) }}
+    </section>
+{% endblock %}
+
+
