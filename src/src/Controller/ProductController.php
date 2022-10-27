@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Sales;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,11 +15,18 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends AbstractController
 {
     #[Route('/product/{id}', name: "app_product")]
-    public function index(ProductRepository $repository , Product $product): Response
+    public function index(Product $product): Response
     {
+        $productSale = $product->getSales();
+        $userSeller = $productSale->getUser();
+        $getProductSeller = $productSale->getUser()->getSales()->toArray();
+        $allProductSeller = \array_map(function ($sales) { return $sales->getProduct();}, $getProductSeller);
+
         return $this->render("product.html.twig", [
             'product' => $product,
-            'products' => $repository->findAll()
+            'sale' => $productSale,
+            'user' => $userSeller,
+            'otherProduct' => $allProductSeller
         ]);
     }
 

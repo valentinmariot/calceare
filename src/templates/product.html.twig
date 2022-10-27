@@ -41,20 +41,22 @@
                     <h3 style="margin-top: 40px" class="primary_color">${{ product.price }}</h3>
                 </div>
 
-                <a href="{{ path('app_user') }}" class="product-seller shadow">
-                    <h2 class="product-seller-title">ABOUT THE SELLER</h2>
-                    <figure class="shadow product-seller-picture">
-                        <img src="{{ asset('img/produit.jpg') }}" alt="">
-                    </figure>
-                    <h2 class="product-seller-name">X-LIL-NAS-X</h2>
-                    <div class="product-seller-rating">
-                        <img src="{{ asset('img/star.png') }}" alt="">
-                        <img src="{{ asset('img/star.png') }}" alt="">
-                        <img src="{{ asset('img/star.png') }}" alt="">
-                        <img src="{{ asset('img/star.png') }}" alt="">
-                        <img src="{{ asset('img/star.png') }}" alt="">
-                    </div>
-                </a>
+                {% if user %}
+                    <a href="{{ path('app_user', {id: user.id}) }}" class="product-seller shadow">
+                        <h2 class="product-seller-title">ABOUT THE SELLER</h2>
+                        <figure class="shadow product-seller-picture">
+                            <img src="{{ asset('img/produit.jpg') }}" alt="">
+                        </figure>
+                        <h2 class="product-seller-name">{{ user.username }}</h2>
+                        <div class="product-seller-rating">
+                            <img src="{{ asset('img/star.png') }}" alt="">
+                            <img src="{{ asset('img/star.png') }}" alt="">
+                            <img src="{{ asset('img/star.png') }}" alt="">
+                            <img src="{{ asset('img/star.png') }}" alt="">
+                            <img src="{{ asset('img/star.png') }}" alt="">
+                        </div>
+                    </a>
+                {% endif %}
             </div>
 
             <a href="" class="CTA">
@@ -67,7 +69,7 @@
     <section class="recommendation border-bottom">
         <h2>You'll appreciate</h2>
         <div class="recommendation-slider">
-            {% for product in products|reverse %}
+            {% for product in otherProduct|reverse %}
                 <div class="recommendation-product">
                     <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                         <img src="../uploads/{{ product.image }}" alt="{{ product.title }}">
