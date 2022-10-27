@@ -295,6 +295,9 @@ li{
 .border-bottom{
     border-bottom: 20px solid var(--black-color) !important;
 }
+.border{
+    border: var(--border-black) !important;
+}
 .border-radius{
     border-radius: var(--radius-30);
 }
@@ -548,6 +551,44 @@ li{
 }
 .primary_color{
     color: var(--primary-color) !important;
+}
+.message{
+    padding: var(--4m);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.message .user-message{
+    min-width: 250px;
+    margin-right: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.message .user-message figure{
+    height: 150px;
+    border-radius: 100%;
+    margin-bottom: 16px;
+}
+.message .user-message:hover h5{
+    color: var(--primary-color);
+}
+.response{
+    margin-left: auto;
+    width: calc(100% - 300px);
+    padding-top: 32px;
+    border-left: var(--border-black);
+    padding-left: 32px;
+}
+.msg + .msg{
+    margin-top: var(--5m);
+}
+.response> .message+.message{
+    margin-top: 32px;
 }
 .dashed{
     text-decoration: line-through;
