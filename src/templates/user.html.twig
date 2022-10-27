@@ -16,7 +16,16 @@
         </figure>
         <div class="detail_user">
             {% if canEdit == false %}
-                <form action="{{ path("app_edit_user_form") }}" method="post">
+            <button class="CTA">
+                <a href="{{ path('app_user-edit', {'id': user.id}) }}">
+                    Update your profile →
+                </a>
+            </button>
+            {% endif %}
+
+            {# OLD CODE TO KEEP IN CASE THAT WE NEED TO REAPLY SOME ELTS#}
+
+            {# <form action="{{ path("app_edit_user_form") }}" method="post">
                     <h1 class="edit_icone">
                         <input class="input_h1" type="text" name="name_user" value="{{ user.username }}" placeholder="Your name" required>
                     </h1>
@@ -48,8 +57,10 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-                </form>
-            {% else %}
+                </form> #}
+
+                {# END OLD CODE #}
+
                 <h1>{{ user.username }}</h1>
                     <div class="note">
                         {% if user.rating == 0 %}
@@ -74,11 +85,10 @@
                     <div class="flexrow">
                         <h5>Sales:</h5>
                         <span>
-                            {{ sales|length }}
+                            {# {{ sales|length }} #}
                         </span>
                     </div>
                 </div>
-            {% endif %}
 
         </div>
 
