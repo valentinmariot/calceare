@@ -139,12 +139,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfilePicture(): ?string
+    public function getProfile_Picture(): ?string
     {
         return $this->profile_picture;
     }
 
-    public function setProfilePicture(string $profile_picture): self
+    public function setProfile_Picture(string $profile_picture): self
     {
         $this->profile_picture = $profile_picture;
 

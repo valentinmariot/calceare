@@ -45,15 +45,17 @@
                     <a href="{{ path('app_user', {id: user.id}) }}" class="product-seller shadow">
                         <h2 class="product-seller-title">ABOUT THE SELLER</h2>
                         <figure class="shadow product-seller-picture">
-                            <img src="{{ asset('img/produit.jpg') }}" alt="">
+                            <img src="../uploads/{{ user.profile_picture }}" alt="{{ user.username }}">
                         </figure>
                         <h2 class="product-seller-name">{{ user.username }}</h2>
                         <div class="product-seller-rating">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
+                            {% if user.rating == 0 %}
+                                <p class="primary_color">0 star</p>
+                            {% else %}
+                                {% for i in 1..user.rating %}
+                                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </a>
                 {% endif %}
