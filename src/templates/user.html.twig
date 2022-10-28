@@ -176,14 +176,18 @@
                 <span>Rate it +</span>
             </button>
         </form>
+        {% if messages|length > 0 %}
 
         <div class="msg">
+            {% for message in messages %}
+
+
             <div class="message border-radius border">
                 <a href="" class="user-message border-radius">
                     <figure class="shadow border">
                         <img src="" alt="">
                     </figure>
-                    <h5>X-lil-nas-x</h5>
+                    <h5>{{ message.author.username }}</h5>
                 </a>
                 <div class="contenu-message">
                     <div>
@@ -193,7 +197,10 @@
                         <img src="{{ asset('img/star.png') }}" alt="Star">
                         <img src="{{ asset('img/star.png') }}" alt="Star">
                     </div>
-                    <p style="margin: 24px 0" class="primary_color">LOREM IPSUM THOMAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALLY SPIES LOREM IPSUM POKEMON LUCAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALY  LAPIN CANARD WC TOTALY SPIES MAXIME LE BG LAPIN CANARD WC TOTALY SPIESLOREM IPSUM BOLOSS BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES LOREM IPSUM POKEMON BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES CHARLES LE BG</p>
+
+
+                    <p style="margin: 24px 0" class="primary_color">{{ message.messageDesc }}</p>
+
                     <span style="font-size: 14px">mardi 01 octobre 2022</span>
 
                     <a style="margin-left: auto; display: block" href="" class="CTA">
@@ -201,6 +208,7 @@
                     </a>
                 </div>
             </div>
+
             <div class="response">
                 <form action="" id="add_response" style="margin: 0 0 40px 0;">
                     <textarea required placeholder="Your response" name="response" id="response" rows="10"></textarea>
@@ -219,6 +227,8 @@
                 </div>
             </div>
         </div>
+                    {% endfor %}
+        {% endif %}
     </section>
 {% endblock %}
 
