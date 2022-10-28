@@ -5,43 +5,41 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
         {{ form(form) }}
+=======
+>>>>>>> 3a7432c ([ADD]SIGNUP)
 
    <section class="sign-up_title">
         <h1>Sign Up</h1>
     </section>
     <section>
+
         <form class="sign-up_form" method="post">
+            {{ form_start(registrationForm) }}
+
             <label class="sign-up_form--label" for="pseudo">
                 Pseudo
             </label>
-            <input
-                    type="text"
-                    id="pseudo"
-                    name="pseudo"
-                    placeholder="Pseudo"
-            />
+            {{ form_row(registrationForm.username) }}
+
             <label class="sign-up_form--label" for="email">
                 Email
             </label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="E-mail"
-            />
+            {{ form_row(registrationForm.email) }}
+
             <label class="sign-up_form--label" for="password">
                 Password
             </label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-            />
-            <button type="submit" class="sign-up_form--button">
-                SUBMIT
-            </button>
+            {{ form_row(registrationForm.plainPassword)}}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="sign-up_form--button">Register</button>
+            {{ form_end(registrationForm) }}
+
         </form>
+
+
+
     </section>
 {% endblock %}
