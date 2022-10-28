@@ -10,9 +10,8 @@
 
 {% block content %}
     <section class="border-bottom grid3 user_detail">
-        {#TODO : show user.image#}
         <figure class="border-radius shadow">
-            <img src="" alt="{{ user.username}}">
+            <img src="../uploads/{{ user.profile_picture }}" alt="{{ user.username}}">
         </figure>
         <div class="detail_user">
             {% if canEdit == false %}
@@ -24,8 +23,7 @@
             {% endif %}
 
             {# OLD CODE TO KEEP IN CASE THAT WE NEED TO REAPLY SOME ELTS#}
-
-            {# <form action="{{ path("app_edit_user_form") }}" method="post">
+                {# <form action="{{ path("app_edit_user_form") }}" method="post">
                     <h1 class="edit_icone">
                         <input class="input_h1" type="text" name="name_user" value="{{ user.username }}" placeholder="Your name" required>
                     </h1>
@@ -58,8 +56,7 @@
                         {% endif %}
                     </div>
                 </form> #}
-
-                {# END OLD CODE #}
+            {# END OLD CODE #}
 
                 <h1>{{ user.username }}</h1>
                     <div class="note">
@@ -71,7 +68,6 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-
                 {% if user.description is empty %}
                     <div>
                         <p>No description yet</p>
