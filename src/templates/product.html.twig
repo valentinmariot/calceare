@@ -61,9 +61,13 @@
                 {% endif %}
             </div>
 
-            <a href="" class="CTA">
-                <span class="product-order">Make order →</span>
-            </a>
+            {% if app.user == user %}
+
+            {% else %}
+                <a href="{{ path('app_basket', {id: user.id}) }}" class="CTA">
+                    <span class="product-order">Make order →</span>
+                </a>
+            {% endif %}
 
         </div>
     </section>

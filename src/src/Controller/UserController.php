@@ -68,7 +68,7 @@ class UserController extends AbstractController
     //     //     ->setPassword($request->request->get("password_user"))
     //     //     ->setEmail($request->request->get("mail_user"))
     //     //     ->setDescription($request->request->get("description_user"))
-    //     //     ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //     //     ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
     //     // // $entityManager->persist($user);
 
@@ -85,7 +85,7 @@ class UserController extends AbstractController
     //         ->setPassword($request->request->get("password_user"))
     //         ->setEmail($request->request->get("mail_user"))
     //         ->setDescription($request->request->get("description_user"))
-    //         ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //         ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
 
     //     $entityManager->persist($user);
