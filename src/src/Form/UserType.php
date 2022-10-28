@@ -23,7 +23,7 @@ class UserType extends AbstractType
                 'data_class' => null
            ])
             // ->add('rating')
-            // ->add('description')
+            ->add('description')
             ->add('submit', SubmitType::class, [
                 'label' => 'Register'
             ])
