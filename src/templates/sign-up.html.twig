@@ -31,14 +31,11 @@
             <label class="sign-up_form--label" for="password">
                 Password
             </label>
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
+            {{ form_row(registrationForm.plainPassword)}}
+            {{ form_row(registrationForm.agreeTerms) }}
 
-                <button type="submit" class="sign-up_form--button">Register</button>
-                {{ form_end(registrationForm) }}
-
-{#            {{ form_row(registrationForm.agreeTerms) }}#}
+            <button type="submit" class="sign-up_form--button">Register</button>
+            {{ form_end(registrationForm) }}
 
         </form>
 
