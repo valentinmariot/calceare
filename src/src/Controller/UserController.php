@@ -21,20 +21,19 @@ class UserController extends AbstractController
     public function user(ProductRepository $repository, User $user): Response
     {
         $canEdit = true;
-        
-        $list = $repository->findAll();
+
         $salesOfUser = $user->getSales()->toArray();
         $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
         $productUser = array_reverse($productUser);
-        $filter1 = array_reverse($list);
-        $lastProductOfUser = array_slice($filter1, 0, 1);
+
+        $oneProductOfUser = array_slice($productUser, 0, 1);
 
         if($user === $this->getUser()) {
             $canEdit = false;
         }
 
         return $this->render("user.html.twig", [
-            'products' => $lastProductOfUser,
+            'products' => $oneProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
             'sales' => $salesOfUser,
