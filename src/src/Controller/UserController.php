@@ -23,9 +23,9 @@ class UserController extends AbstractController
         $canEdit = true;
         
         $list = $repository->findAll();
-        $filter3 = array_reverse($list);
-        $filter3reverse = array_slice($filter3, 0, 3);
-
+        $salesOfUser = $user->getSales()->toArray();
+        $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
+        $productUser = array_reverse($productUser);
         $filter1 = array_reverse($list);
         $lastProductOfUser = array_slice($filter1, 0, 1);
 
@@ -34,10 +34,11 @@ class UserController extends AbstractController
         }
 
         return $this->render("user.html.twig", [
-            'products' => $filter3reverse,
-            'productsUser' => $lastProductOfUser,
+            'products' => $lastProductOfUser,
             'user' => $user,
-            'canEdit' => $canEdit
+            'canEdit' => $canEdit,
+            'sales' => $salesOfUser,
+            'productsUser' => $productUser,
         ]);
     }
 
