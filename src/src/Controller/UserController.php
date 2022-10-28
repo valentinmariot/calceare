@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
 use App\Entity\Product;
 use App\Entity\User;
+use App\Form\MessageType;
 use App\Form\UserType;
 use App\Form\UserEditType;
+use App\Repository\MessageRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,10 +22,19 @@ class UserController extends AbstractController
 {
 
     #[Route('/user/{id}', name: "app_user")]
-    public function user(ProductRepository $repository, User $user): Response
+    public function user(ProductRepository $repository, User $user, MessageRepository $messageRepository): Response
     {
         $canEdit = true;
-        
+
+        // DISPLAY USERS COMMENTS
+        $listMessage = $messageRepository->findAll();
+        $filterMessage = array_reverse($listMessage);
+
+//        $oneMessage = \array_map(function ($message) { return $message->getId();}, $filterMessage);
+
+
+
+        // DISPLAY PRODUCTS
         $list = $repository->findAll();
         $salesOfUser = $user->getSales()->toArray();
         $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
@@ -34,6 +47,8 @@ class UserController extends AbstractController
         }
 
         return $this->render("user.html.twig", [
+            'messages'=> $filterMessage,
+//            'messagesId' => $oneMessage,
             'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
@@ -145,4 +160,81 @@ class UserController extends AbstractController
             'canEdit' => $canEdit
         ]);
     }
+
+
+
+
+
+
+
+    #[Route('/message/{id}', name: 'message_show')]
+    public function showOne(Message $message, User $user): Response {
+        return $this->render('message/show.html.twig', [
+            'message' => $message,
+        ]);
+    }
+
+    #[Route('/user/{id}/message/add', name: 'message_add', priority: 2)]
+    public function add(Request $request, MessageRepository $messages, User $user): Response
+    {
+
+        $message = new Message();
+        $form = $this->createFormBuilder($message)
+            ->add('messageDesc')
+            ->add('submit', SubmitType::class, ['label' => 'submit'])
+            ->getForm();
+
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $message = $form->getData();
+            $message->setAuthor($this->getUser());
+            $message->setSellerId($user->getId());
+            $messages->save($message, true);
+
+            // Add a flash
+            $this->addFlash('success', 'Your comment has been added');
+
+            // Redirect
+            return $this->redirectToRoute("app_user", [
+                'id' => $user->getId()
+            ]);
+        }
+
+        return $this->render("message/add.html.twig", [
+            'form' => $form->createView(),
+            'message' => $message,
+        ]);
+    }
+
+
+//    #[Route('/user/{id}/message', name: 'message_add', priority: 2)]
+//    public function add(Request $request, MessageRepository $messages): Response
+//    {
+//        $message = new Message();
+//        $form = $this->createForm(MessageType::class, new Message());
+//
+//        $form->handleRequest($request);
+//
+//        if($form->isSubmitted() && $form->isValid())
+//        {
+//            $message = $form->getData();
+//            $message->setAuthor($this->getUser());
+////            $message->setUser($this->id);
+//            $messages->save($message, true);
+//
+//            // Add a flash
+//            $this->addFlash('succes', 'Your comment has been added');
+//
+//            // Redirect
+//            return $this->redirectToRoute('app_user');
+//        }
+//
+//        return $this->render('add.html.twig', [
+//            'message' => $form->createView(),
+//        ]);
+//    }
+
 }

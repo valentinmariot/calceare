@@ -21,6 +21,9 @@ class Message
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    #[ORM\Column]
+    private ?int $seller_id = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +49,18 @@ class Message
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getSellerId(): ?int
+    {
+        return $this->seller_id;
+    }
+
+    public function setSellerId(int $seller_id): self
+    {
+        $this->seller_id = $seller_id;
 
         return $this;
     }
