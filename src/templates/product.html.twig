@@ -64,7 +64,8 @@
             {% if app.user == user %}
 
             {% else %}
-                <a href="{{ path('app_basket', {id: user.id}) }}" class="CTA">
+                {#TODO : changer le SELL du produit au clic#}
+                <a href="{{ path('app_basket', {id: product.id}) }}" class="CTA">
                     <span class="product-order">Make order →</span>
                 </a>
             {% endif %}
