@@ -152,12 +152,14 @@
         <section>
         <div class="section_title">
             <h3>opinion</h3>
-            {% if app.user == user %}
+            {% if app.user %}
+                {% if app.user == user %}
 
-            {% else %}
-                <button class="CTA" onclick="openFormulaireCommentaire()">
-                    <span>rate this seller +</span>
-                </button>
+                {% else %}
+                    <button class="CTA" onclick="openFormulaireCommentaire()">
+                        <span>rate this seller +</span>
+                    </button>
+                {% endif %}
             {% endif %}
         </div>
 
