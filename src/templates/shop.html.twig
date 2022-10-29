@@ -10,37 +10,65 @@
     </section>
     <section class="shop_menu">
         <navbar>
-            <ul class="shop_menu_list">
-                <li class="shop_menu_list-item">
-                    <h3 class="shop_menu_list--title">Sort by</h3>
-                </li>
-                <li  class="shop_menu_list-item dropdown">
-                    <label>BRAND</label>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="#">NIKE</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="#">ADIDAS</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="#">LACOST</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="#">NEW BALANCE</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="shop_menu_list-item">COLORS</li>
-                <li class="shop_menu_list-item">CONDITION</li>
-                <li class="shop_menu_list-item">PRICES</li>
-                <li class="shop_menu_list-item">SIZE</li>
-            </ul>
+            <div class="shop_menu_list">
+                <h3 class="shop_menu_list--title">Filter by...</h3>
+                <form action="{{ path('app_shop_search') }}" method="post" class="product_search">
+                    <div class="form_group">
+                        <label>BRAND</label>
+                        <select name="selectBrand">
+                            {% set brands = ['ALL', 'NIKE', 'ADIDAS', 'LACOST'] %}
+                            {% for brand in brands %}
+                                <option value="{{ brand }}">
+                                    {{ brand }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form_group">
+                        <label>CONDITION</label>
+                        <select name="selectCondition">
+                            {% set conditions = ['ALL', 'PO', 'US', 'GD', 'EX', 'NM', 'M'] %}
+                            {% for condition in conditions %}
+                                <option value="{{ condition }}">
+                                    {{ condition }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>SIZE</label>
+                        <div class="form_min_max">
+                            <input type="number" name="selectMinSize" placeholder="min. size" min="1" max="60">
+                            <input type="number" name="selectMaxSize" placeholder="max. size" min="1" max="60">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>PRICE</label>
+                        <div class="form_min_max">
+                            <input type="number" name="selectMinPrice" placeholder="min. price" min="0">
+                            <input type="number" name="selectMaxPrice" placeholder="max. price" min="1" class="inputBeforeSubmit">
+                        </div>
+                    </div>
+
+                    <input type="submit" value="SEARCH">
+                </form>
+            </div>
+            <div class="shop_menu_list">
+                <h3 class="shop_menu_list--title">Looking for something specific?</h3>
+                <form action="{{ path('app_shop_search_specific') }}" method="post">
+                    <input type="text" name="searchInput" class="search_bar">
+                    <input type="submit" value="SEARCH">
+                </form>
+            </div>
         </navbar>
     </section>
     <section>
+        <h3>Our products:</h3>
         <div class="grid3">
-            {% for product in products|reverse %}
+            {% for product in products %}
                 <a href="{{ path('app_product', {id: product.id}) }}" class="card_produit sales">
                     <img src="../uploads/{{ product.image }}" alt="{{ product.title }}">
                     <div class="detail">

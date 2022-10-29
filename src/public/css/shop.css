@@ -10,87 +10,42 @@
 }
 
 .shop_menu_list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.shop_menu_list li:hover {
-    font-weight: bold;
-    letter-spacing: 0;
-    cursor: pointer;
-}
-
-.dropdown label:hover {
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: 0;
+    margin: 0 auto 50px;
 }
 
 .shop_menu_list--title {
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
-.sub-menu-item a {
-    text-decoration: none;
-    font-weight: normal;
-    color: var(--white-color);
-    background-color: var(--dark-color);
+form {
+    flex-direction: row;
+    align-items: end;
+    flex-wrap: wrap;
 }
 
-li {
+form > div > * {
     display: block;
-    float: left;
-    position: relative;
-    text-decoration: none;
-    transition-duration: 0.5s;
+    margin: 10px 20px 0 0
 }
 
-li:hover,
-li:focus-within {
-    letter-spacing: 0.36px;
-    cursor: pointer;
+.form_min_max input {
+    width: 130px;
 }
 
-li:focus-within a {
-    letter-spacing: 0.36px;
-    outline: none;
+.search_bar, .inputBeforeSubmit {
+    margin-right: 50px;
 }
 
-.sub-menu {
-    visibility: hidden;
-    opacity: 0;
-    min-width: 5rem;
-    position: absolute;
-    transition: all 0.5s ease;
-    left: 0;
-    display: none;
-    background-color: var(--dark-color);
-    gap: 15px;
-    padding: var(--2m);
-    display: flex !important;
-    z-index: 7 !important;
-    flex-direction: column;
-}
-
-ul li:hover > ul,
-ul li:focus-within > ul,
-.sub-menu:hover,
-.sub-menu:focus {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-}
-
-.sub-menu-item {
-    clear: both;
+.search_bar {
+    max-width: 500px;
     width: 100%;
-    padding: var(--2m);
 }
 
-.sub-menu-item a:hover {
-    letter-spacing: 0;
-    font-weight: bold;
-    color: var(--primary-color);
+.product_search input:not(input[type='submit']),
+.product_search select {
+    border-radius: 0;
+}
+
+input[type='submit'] {
+    margin-top: 10px;
 }
