@@ -577,6 +577,9 @@ li{
 .message .user-message:hover h5{
     color: var(--primary-color);
 }
+.contenu-message{
+    width: inherit;
+}
 .response{
     margin-left: auto;
     width: calc(100% - 300px);
@@ -595,6 +598,9 @@ li{
 }
 .dnone{
     display: none !important;
+}
+.dflex{
+    display: flex !important;
 }
 .disabled{
     pointer-events: none;

@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Entity\Product;
+use App\Entity\Sales;
 use App\Entity\User;
 use App\Form\MessageType;
 use App\Form\UserType;
-use App\Form\UserEditType;
 use App\Repository\MessageRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
@@ -26,7 +26,7 @@ class UserController extends AbstractController
     {
         $canEdit = true;
 
-        // DISPLAY USERS COMMENTS
+        // DISPLAY USERS MESSAGE
         $listMessage = $messageRepository->findAll();
         $filterMessage = array_reverse($listMessage);
 
@@ -161,80 +161,20 @@ class UserController extends AbstractController
         ]);
     }
 
-
-
-
-
-
-
-    #[Route('/message/{id}', name: 'message_show')]
-    public function showOne(Message $message, User $user): Response {
-        return $this->render('message/show.html.twig', [
-            'message' => $message,
-        ]);
-    }
-
-    #[Route('/user/{id}/message/add', name: 'message_add', priority: 2)]
-    public function add(Request $request, MessageRepository $messages, User $user): Response
+    #[Route('/user/{id}/add_message', name: "app_add_message_form", methods: ["POST"])]
+    public function addMessage(EntityManagerInterface $entityManager, Request $request, User $user): Response
     {
 
-        $message = new Message();
-        $form = $this->createFormBuilder($message)
-            ->add('messageDesc')
-            ->add('submit', SubmitType::class, ['label' => 'submit'])
-            ->getForm();
+        if (isset($_POST['addMessage'])) {
+            $message = (new Message())
+                ->setMessageDesc($request->request->get("message"))
+                ->setSellerId($user->getId())
+                ->setAuthor($this->getUser());
 
+            $entityManager->persist($message);
+            $entityManager->flush();
+        };
 
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $message = $form->getData();
-            $message->setAuthor($this->getUser());
-            $message->setSellerId($user->getId());
-            $messages->save($message, true);
-
-            // Add a flash
-            $this->addFlash('success', 'Your comment has been added');
-
-            // Redirect
-            return $this->redirectToRoute("app_user", [
-                'id' => $user->getId()
-            ]);
-        }
-
-        return $this->render("message/add.html.twig", [
-            'form' => $form->createView(),
-            'message' => $message,
-        ]);
+        return $this->redirectToRoute('app_user', array('id' => $user->getId()));
     }
-
-
-//    #[Route('/user/{id}/message', name: 'message_add', priority: 2)]
-//    public function add(Request $request, MessageRepository $messages): Response
-//    {
-//        $message = new Message();
-//        $form = $this->createForm(MessageType::class, new Message());
-//
-//        $form->handleRequest($request);
-//
-//        if($form->isSubmitted() && $form->isValid())
-//        {
-//            $message = $form->getData();
-//            $message->setAuthor($this->getUser());
-////            $message->setUser($this->id);
-//            $messages->save($message, true);
-//
-//            // Add a flash
-//            $this->addFlash('succes', 'Your comment has been added');
-//
-//            // Redirect
-//            return $this->redirectToRoute('app_user');
-//        }
-//
-//        return $this->render('add.html.twig', [
-//            'message' => $form->createView(),
-//        ]);
-//    }
-
 }
