@@ -586,7 +586,7 @@ li{
     padding-top: 32px;
     border-left: var(--border-black);
     padding-left: 32px;
-}
+}.msg{width: 100%}
 .msg + .msg{
     margin-top: var(--5m);
 }

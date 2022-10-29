@@ -42,6 +42,9 @@ class UserController extends AbstractController
             $canEdit = false;
         }
 
+        /*TODO : faire une variable dynamique de response*/
+        $response = false;
+
         return $this->render("user.html.twig", [
             'messages'=> $filterMessage,
             'products' => $lastProductOfUser,
@@ -49,6 +52,8 @@ class UserController extends AbstractController
             'canEdit' => $canEdit,
             'sales' => $salesOfUser,
             'productsUser' => $productUser,
+
+            'response' => $response,
         ]);
     }
 
