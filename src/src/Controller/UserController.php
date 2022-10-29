@@ -18,22 +18,34 @@ class UserController extends AbstractController
 {
 
     #[Route('/user/{id}', name: "app_user")]
-    public function user(ProductRepository $repository, User $user): Response
+    public function user(ProductRepository $repository, User $user, MessageRepository $messageRepository): Response
     {
         $canEdit = true;
 
+        // DISPLAY USERS COMMENTS
+        $listMessage = $messageRepository->findAll();
+        $filterMessage = array_reverse($listMessage);
+
+//        $oneMessage = \array_map(function ($message) { return $message->getId();}, $filterMessage);
+
+
+
+        // DISPLAY PRODUCTS
+        $list = $repository->findAll();
         $salesOfUser = $user->getSales()->toArray();
         $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
         $productUser = array_reverse($productUser);
-
-        $oneProductOfUser = array_slice($productUser, 0, 1);
+        $filter1 = array_reverse($list);
+        $lastProductOfUser = array_slice($filter1, 0, 1);
 
         if($user === $this->getUser()) {
             $canEdit = false;
         }
 
         return $this->render("user.html.twig", [
-            'products' => $oneProductOfUser,
+            'messages'=> $filterMessage,
+//            'messagesId' => $oneMessage,
+            'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
             'sales' => $salesOfUser,
@@ -68,7 +80,7 @@ class UserController extends AbstractController
     //     //     ->setPassword($request->request->get("password_user"))
     //     //     ->setEmail($request->request->get("mail_user"))
     //     //     ->setDescription($request->request->get("description_user"))
-    //     //     ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //     //     ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
     //     // // $entityManager->persist($user);
 
@@ -85,7 +97,7 @@ class UserController extends AbstractController
     //         ->setPassword($request->request->get("password_user"))
     //         ->setEmail($request->request->get("mail_user"))
     //         ->setDescription($request->request->get("description_user"))
-    //         ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //         ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
 
     //     $entityManager->persist($user);
