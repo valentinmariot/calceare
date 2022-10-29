@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
 use App\Entity\Product;
+use App\Entity\Sales;
 use App\Entity\User;
 use App\Form\UserType;
-use App\Form\UserEditType;
+use App\Repository\MessageRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,7 +24,7 @@ class UserController extends AbstractController
     {
         $canEdit = true;
 
-        // DISPLAY USERS COMMENTS
+        // DISPLAY USERS MESSAGE
         $listMessage = $messageRepository->findAll();
         $filterMessage = array_reverse($listMessage);
 
@@ -155,5 +157,22 @@ class UserController extends AbstractController
             'user' => $user,
             'canEdit' => $canEdit
         ]);
+    }
+
+    #[Route('/user/{id}/add_message', name: "app_add_message_form", methods: ["POST"])]
+    public function addMessage(EntityManagerInterface $entityManager, Request $request, User $user): Response
+    {
+
+        if (isset($_POST['addMessage'])) {
+            $message = (new Message())
+                ->setMessageDesc($request->request->get("message"))
+                ->setSellerId($user->getId())
+                ->setAuthor($this->getUser());
+
+            $entityManager->persist($message);
+            $entityManager->flush();
+        };
+
+        return $this->redirectToRoute('app_user', array('id' => $user->getId()));
     }
 }

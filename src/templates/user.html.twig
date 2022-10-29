@@ -148,15 +148,20 @@
             {% endfor %}
         </div>
     </section>
-    <section>
+
+        <section>
         <div class="section_title">
             <h3>opinion</h3>
-            <button class="CTA">
-                <span>rate this seller +</span>
-            </button>
+            {% if app.user == user %}
+
+            {% else %}
+                <button class="CTA" onclick="openFormulaireCommentaire()">
+                    <span>rate this seller +</span>
+                </button>
+            {% endif %}
         </div>
 
-        <form action="" id="add_message" style="margin: 0 0 40px 0; width: 100%">
+        <form class="dnone" action="{{ path("app_add_message_form", {id: user.id}) }}" method="post" id="add_message" style="margin: 0 0 40px 0; width: 100%">
             <div>
             <label for="star">Number of star(s)</label>
             <select required class="input" name="star" id="star">
@@ -170,65 +175,66 @@
             </div>
             <br>
             <br>
-            <textarea required placeholder="Your opinion about the seller" name="question" id="question" rows="10"></textarea>
+            <textarea required placeholder="Your opinion about the seller" name="message" id="question" rows="10"></textarea>
             <br>
-            <button type="submit" class="CTA">
+            <button type="submit" class="CTA" name="addMessage">
                 <span>Rate it +</span>
             </button>
         </form>
         {% if messages|length > 0 %}
+                {% for message in messages %}
+                    {% if user.id == message.sellerid %}
+                <div class="msg">
+                    <div class="message border-radius border">
+                        <a href="{{ path("app_user", {id: message.author.id}) }}" class="user-message border-radius">
+                            <figure class="shadow border">
+                                <img src="../uploads/{{ message.author.profile_picture }}" alt="{{ message.author.username }}">
+                            </figure>
+                            <h5>{{ message.author.username }}</h5>
+                        </a>
+                        <div class="contenu-message">
+                            <div>
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                                <img src="{{ asset('img/star.png') }}" alt="Star">
+                            </div>
 
-        <div class="msg">
-            {% for message in messages %}
+                            <p style="margin: 24px 0" class="primary_color">{{ message.messageDesc }}</p>
 
-
-            <div class="message border-radius border">
-                <a href="" class="user-message border-radius">
-                    <figure class="shadow border">
-                        <img src="" alt="">
-                    </figure>
-                    <h5>{{ message.author.username }}</h5>
-                </a>
-                <div class="contenu-message">
-                    <div>
-                        <img src="{{ asset('img/star.png') }}" alt="Star">
-                        <img src="{{ asset('img/star.png') }}" alt="Star">
-                        <img src="{{ asset('img/star.png') }}" alt="Star">
-                        <img src="{{ asset('img/star.png') }}" alt="Star">
-                        <img src="{{ asset('img/star.png') }}" alt="Star">
+                            {#<span style="font-size: 14px">mardi 01 octobre 2022</span>#}
+                        </div>
                     </div>
+                    <div class="response">
+                        {% if app.user == user %}
+                            <form action="" id="add_response" style="margin: 0 0 40px 0;">
+                                <textarea required placeholder="Your response" name="response" id="response" rows="5"></textarea>
+                                <br>
+                                <button type="submit" class="CTA">
+                                    <span>Reply +</span>
+                                </button>
+                            </form>
+                        {% endif %}
 
-
-                    <p style="margin: 24px 0" class="primary_color">{{ message.messageDesc }}</p>
-
-                    <span style="font-size: 14px">mardi 01 octobre 2022</span>
-
-                    <a style="margin-left: auto; display: block" href="" class="CTA">
-                        <span>Reply ↑</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="response">
-                <form action="" id="add_response" style="margin: 0 0 40px 0;">
-                    <textarea required placeholder="Your response" name="response" id="response" rows="10"></textarea>
-                    <br>
-                    <button type="submit" class="CTA">
-                        <span>Reply +</span>
-                    </button>
-                </form>
-
-                <div class="message border-radius border">
-                    <div class="contenu-message">
-                        <h5>the Seller</h5>
-                        <p style="margin: 24px 0" class="primary_color">LOREM IPSUM THOMAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALLY SPIES LOREM IPSUM POKEMON LUCAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALY  LAPIN CANARD WC TOTALY SPIES MAXIME LE BG LAPIN CANARD WC TOTALY SPIESLOREM IPSUM BOLOSS BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES LOREM IPSUM POKEMON BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES CHARLES LE BG</p>
-                        <span style="font-size: 14px">mardi 01 octobre 2022</span>
+                        <div class="message border-radius border">
+                            <div class="contenu-message">
+                                <h5>the Seller</h5>
+                                <p style="margin: 24px 0" class="primary_color">LOREM IPSUM THOMAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALLY SPIES LOREM IPSUM POKEMON LUCAS LE BG BACON OIGON MUFFIN LAPIN CANARD WC TOTALY  LAPIN CANARD WC TOTALY SPIES MAXIME LE BG LAPIN CANARD WC TOTALY SPIESLOREM IPSUM BOLOSS BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES LOREM IPSUM POKEMON BACON OIGON MUFFIN LAPIN CANARD WC TOTALY SPIES CHARLES LE BG</p>
+                                {#<span style="font-size: 14px">mardi 01 octobre 2022</span>#}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-                    {% endfor %}
+                    {% endif  %}
+                {% endfor %}
         {% endif %}
+
+        <script>
+            function openFormulaireCommentaire(){
+                document.getElementById('add_message').classList.add("dflex");
+            }
+        </script>
     </section>
 {% endblock %}
 
