@@ -28,17 +28,13 @@ class UserController extends AbstractController
         $listMessage = $messageRepository->findAll();
         $filterMessage = array_reverse($listMessage);
 
-//        $oneMessage = \array_map(function ($message) { return $message->getId();}, $filterMessage);
-
-
-
         // DISPLAY PRODUCTS
         $list = $repository->findAll();
         $salesOfUser = $user->getSales()->toArray();
         $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
         $productUser = array_reverse($productUser);
-        $filter1 = array_reverse($list);
-        $lastProductOfUser = array_slice($filter1, 0, 1);
+
+        $lastProductOfUser = array_slice($productUser, 0, 1);
 
         if($user === $this->getUser()) {
             $canEdit = false;
@@ -46,7 +42,6 @@ class UserController extends AbstractController
 
         return $this->render("user.html.twig", [
             'messages'=> $filterMessage,
-//            'messagesId' => $oneMessage,
             'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
