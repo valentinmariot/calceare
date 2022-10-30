@@ -84,16 +84,16 @@
 .product-seller-rating {
     margin: 10px auto;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-content: space-between;
-    width: 200px;
+    align-content: center;
+    width: 100%;
 }
 
 .product-seller-rating * {
     display: inline;
     height: 29px;
-    width: 29px;
-    transform: rotate(45deg);
+    margin: 0 3px;
 }
 .product-img{
     min-height: 500px;

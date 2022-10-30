@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
 use App\Entity\Product;
+use App\Entity\Sales;
 use App\Entity\User;
+use App\Form\MessageType;
 use App\Form\UserType;
-use App\Form\UserEditType;
+use App\Repository\MessageRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,27 +22,38 @@ class UserController extends AbstractController
 {
 
     #[Route('/user/{id}', name: "app_user")]
-    public function user(ProductRepository $repository, User $user): Response
+    public function user(ProductRepository $repository, User $user, MessageRepository $messageRepository): Response
     {
         $canEdit = true;
-        
+
+        // DISPLAY USERS MESSAGE
+        $listMessage = $messageRepository->findAll();
+        $filterMessage = array_reverse($listMessage);
+
+        // DISPLAY PRODUCTS
         $list = $repository->findAll();
         $salesOfUser = $user->getSales()->toArray();
         $productUser = \array_map(function ($sales) { return $sales->getProduct();}, $salesOfUser);
         $productUser = array_reverse($productUser);
-        $filter1 = array_reverse($list);
-        $lastProductOfUser = array_slice($filter1, 0, 1);
+
+        $lastProductOfUser = array_slice($productUser, 0, 1);
 
         if($user === $this->getUser()) {
             $canEdit = false;
         }
 
+        /*TODO : faire une variable dynamique de response*/
+        $response = false;
+
         return $this->render("user.html.twig", [
+            'messages'=> $filterMessage,
             'products' => $lastProductOfUser,
             'user' => $user,
             'canEdit' => $canEdit,
             'sales' => $salesOfUser,
             'productsUser' => $productUser,
+
+            'response' => $response,
         ]);
     }
 
@@ -69,7 +84,7 @@ class UserController extends AbstractController
     //     //     ->setPassword($request->request->get("password_user"))
     //     //     ->setEmail($request->request->get("mail_user"))
     //     //     ->setDescription($request->request->get("description_user"))
-    //     //     ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //     //     ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
     //     // // $entityManager->persist($user);
 
@@ -86,7 +101,7 @@ class UserController extends AbstractController
     //         ->setPassword($request->request->get("password_user"))
     //         ->setEmail($request->request->get("mail_user"))
     //         ->setDescription($request->request->get("description_user"))
-    //         ->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+    //         ->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
 
     //     $entityManager->persist($user);
@@ -144,5 +159,22 @@ class UserController extends AbstractController
             'user' => $user,
             'canEdit' => $canEdit
         ]);
+    }
+
+    #[Route('/user/{id}/add_message', name: "app_add_message_form", methods: ["POST"])]
+    public function addMessage(EntityManagerInterface $entityManager, Request $request, User $user): Response
+    {
+
+        if (isset($_POST['addMessage'])) {
+            $message = (new Message())
+                ->setMessageDesc($request->request->get("message"))
+                ->setSellerId($user->getId())
+                ->setAuthor($this->getUser());
+
+            $entityManager->persist($message);
+            $entityManager->flush();
+        };
+
+        return $this->redirectToRoute('app_user', array('id' => $user->getId()));
     }
 }

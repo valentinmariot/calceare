@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
             )
         );
         $user1->setUsername('John Doe');
-        $user1->setProfilePicture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
+        $user1->setProfile_Picture('https://images.unsplash.com/photo-1666644611406-b67537c5ead9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
         $user1->setRating(5);
         $user1->setDescription('lorem ipsum');
 //      $user1->setRoles(['ROLE_ADMIN']);

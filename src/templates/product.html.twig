@@ -45,23 +45,30 @@
                     <a href="{{ path('app_user', {id: user.id}) }}" class="product-seller shadow">
                         <h2 class="product-seller-title">ABOUT THE SELLER</h2>
                         <figure class="shadow product-seller-picture">
-                            <img src="{{ asset('img/produit.jpg') }}" alt="">
+                            <img src="../uploads/{{ user.profile_picture }}" alt="{{ user.username }}">
                         </figure>
                         <h2 class="product-seller-name">{{ user.username }}</h2>
                         <div class="product-seller-rating">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
-                            <img src="{{ asset('img/star.png') }}" alt="">
+                            {% if user.rating == 0 %}
+                                <p class="primary_color">0 star</p>
+                            {% else %}
+                                {% for i in 1..user.rating %}
+                                    <img src="{{ asset('img/star.png') }}" alt="Star">
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </a>
                 {% endif %}
             </div>
 
-            <a href="" class="CTA">
-                <span class="product-order">Make order →</span>
-            </a>
+            {% if app.user == user %}
+
+            {% else %}
+                {#TODO : changer le SELL du produit au clic#}
+                <a href="{{ path('app_basket', {id: product.id}) }}" class="CTA">
+                    <span class="product-order">Make order →</span>
+                </a>
+            {% endif %}
 
         </div>
     </section>
